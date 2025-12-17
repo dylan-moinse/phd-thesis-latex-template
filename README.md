@@ -175,7 +175,7 @@ phd-thesis-latex-template/         # Root directory of the thesis template
 │
 └── extra/                         ## Additional resources
     │   github/                    ### Screenshots for README
-    └── logo/                      # Institutional and partner logo example
+    └── logo/                      ### Institutional and partner logo example
 ```
 
 
