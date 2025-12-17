@@ -1,0 +1,30 @@
+%% =====================================
+%% APPENDIX E
+%% =====================================
+%% Description: Integrate Appendix E
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/05-appendix-e.tex
+    \begin{document}
+
+    \newpage
+
+%% Appendix E
+\section*{Appendix~E: Structure of the \texttt{elements/} \latexword{LaTeX} Folder}
+    \label{appendix:e}
+    %\addcontentsline{toc}{chapter}{}
+    \addcontentsline{toc}{section}{Appendix~E: Structure of the Elements Folder}
+
+%% Force numbering
+\renewcommand{\thefigure}{E.\arabic{figure}}
+\renewcommand{\themap}{E.\arabic{map}}
+\renewcommand{\thetable}{E.\arabic{table}}
+\renewcommand{\theequation}{E.\arabic{equation}}
+
+%% Diagram Appendix E
+\subfile{../../../elements/appendices/figures/figE1}
+
+%% End content/back-matter/appendices/05-appendix-e.tex
+    \end{document}

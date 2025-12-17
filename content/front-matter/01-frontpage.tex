@@ -1,0 +1,171 @@
+%% =====================================
+%% FRONT PAGE
+%% =====================================
+%% Description: Custom title page for PhD thesis
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/front-matter/01-frontpage.tex
+\begin{document}
+
+%% Remove headers and footers on title page
+\thispagestyle{empty}
+
+%% =====================================
+%% LOGOS - TOP SECTION
+%% =====================================
+
+\begin{center}
+
+%% Three institutional logos
+\begin{minipage}[t]{0.32\textwidth}
+  \centering
+  \includegraphics[height=1.5cm]{extra/logo/logo.pdf}\\[0.2em]
+  {\footnotesize\textcolor{gray}{\textsl{University 1}}}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+  \centering
+  \includegraphics[height=1.5cm]{extra/logo/logo.pdf}\\[0.2em]
+  {\footnotesize\textsl{\textcolor{gray}{Laboratory 1}}}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+  \centering
+  \includegraphics[height=1.5cm]{extra/logo/logo.pdf}\\[0.2em]
+  {\footnotesize\textsl{\textcolor{gray}{Organization 1}}}
+\end{minipage}
+
+    \vspace{0.5cm}
+
+\noindent\rule{\textwidth}{0.1pt}
+
+%% =====================================
+%% THESIS TITLE
+%% =====================================
+
+    \vspace{0.5cm}
+
+\begin{flushleft}
+{\Large\bfseries
+PhD Title Thesis
+}
+
+    \vspace{0.25cm}
+
+{\normalsize\bfseries
+Subtitle
+}
+
+    \vspace{0.25cm}
+
+%% =====================================
+%% DEGREE INFORMATION
+%% =====================================
+
+\hspace{1cm} {\small
+{Thesis for the degree of}
+\\[0.5em]
+\hspace{1cm} \large{\textbf{PhD in Fields of Study}}
+}
+
+    \vspace{0.25cm}
+
+\hspace{1cm} {\small{
+Defended publicly by}
+\\[0.5em]
+\hspace{1cm} \textbf{\Large Candidate's Name}
+}
+
+    \vspace{0.25cm}
+
+\hspace{1cm} {\footnotesize{
+City, \today} % Write Date
+}
+\end{flushleft}
+
+    \vspace{0.25cm}
+
+\noindent\rule{\textwidth}{0.1pt}
+
+    \vspace{0.25cm}
+
+%% =====================================
+%% THESIS COMMITTEE
+%% =====================================
+
+    \begin{flushleft}
+{\footnotesize{Thesis Committee}}
+    \end{flushleft}
+
+    \vspace{0.25cm}
+
+\end{center}
+
+%% Jury members table (left-aligned for better readability)
+    \begin{flushleft}
+    %%
+%% Supervisor 1
+\textbf{Supervisor's Name} \hfill \textbf{Role}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Title}}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Affiliation}}
+
+    \vspace{0.25cm}
+
+%% Member 1
+\textbf{Examiner's Name} \hfill \textbf{Role}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Title}}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Affiliation}}
+
+    \vspace{0.25cm}
+
+%% Member 2
+\textbf{Examiner's Name} \hfill \textbf{Role}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Title}}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Affiliation}}
+
+    \vspace{0.25cm}
+
+%% Member 3
+\textbf{Examiner's Name} \hfill \textbf{Role}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Title}}\\
+\hspace{0.5cm} \textcolor{gray}{\textsl{Affiliation}}
+    %%
+    \end{flushleft}
+
+%% =====================================
+%% BOTTOM LOGOS AND FUNDING
+%% =====================================
+
+    \vspace{0.25cm}
+
+\noindent\rule{\textwidth}{0.1pt}
+%%
+\begin{center}
+
+%% Doctoral school and funding information
+\begin{minipage}[b]{0.48\textwidth}
+  \centering
+  \includegraphics[height=1.5cm]{extra/logo/logo.pdf}\\[0.1em]
+  {\footnotesize
+  \textsl{\textcolor{gray}{Graduate Unit}}
+  }
+\end{minipage}%
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+  \centering
+  {\footnotesize
+  \textsl{\textcolor{gray}{Funding Organization}}
+  }\\[0.5em]
+  \includegraphics[height=1.5cm]{extra/logo/logo.pdf}
+\end{minipage}
+
+\end{center}
+
+%% =====================================
+%% END OF FRONT PAGE
+%% =====================================
+
+%% End content/front-matter/01-frontpage.tex
+\end{document}

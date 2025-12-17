@@ -1,0 +1,283 @@
+%% =====================================
+%% MAIN DOCUMENT - PhD THESIS
+%% =====================================
+%% Description: Main file for thesis compilation
+%% Uses: thesis.cls with modular .sty files
+%% Structure: Subfiles for chapters (can be compiled independently)
+%% Compilation: lualatex main.tex (recommended) or pdflatex main.tex
+
+%% =====================================
+%% COPYRIGHT AND CREDITS
+%% =====================================
+%% Author: Dylan Moinse
+%% Year: 2025
+%% Institution: Gustave Eiffel University, France
+
+%% LaTeX Template Credits:
+%% - Template: Dylan Moinse
+%% - Technical support: Jorge Mariano, Alain L'Hostis, and Iñigo Aguas Ardaiz
+
+%% License: This thesis document is made publicly available in 2025.
+%% The LaTeX template may be reused and adapted with proper attribution.
+
+%% Contact: dylan.moinse@unil.ch
+
+%% =====================================
+%% DOCUMENT CLASS
+%% =====================================
+%% Load custom thesis class
+%% Options:
+%% - a4paper: A4 paper size (210×297mm)
+%% - twoside: Different margins for left/right pages (for binding)
+%% - openright: Chapters start on right (odd) pages only
+%% - draft: Uncomment for faster compilation (no images)
+
+\documentclass[a4paper, twoside, openright]{asset/thesis}
+% For draft mode (faster, shows overfull boxes):
+% \documentclass[a4paper, twoside, openright, draft]{thesis}
+
+%% =====================================
+%% GRAPHICS PATH
+%% =====================================
+%% Define directories where LaTeX looks for images
+%% Add more paths as needed for your project structure
+
+\graphicspath{%
+  {./extra/logo/}, % Institutional logos
+  {./elements/figures/}, % Main figures directory
+    {./figures/pic/}, % Pictures (figures)
+  {./elements/maps/}, % Main maps directory
+    {./maps/pic/}, % Pictures (maps)
+  {./elements/tables/}, % Main tables directory
+  {./elements/equations/} % Equations
+}
+
+%% =====================================
+%% LIST SPACING CONFIGURATION
+%% =====================================
+%% Remove spacing between items in lists (itemize, enumerate)
+%% Makes lists more compact (optional, comment out for standard spacing)
+
+\AtBeginDocument{
+  \setlist[itemize]{noitemsep} % No space between items
+  \setlist[enumerate]{noitemsep} % No space between numbered items
+}
+
+%% =====================================
+%% BEGIN DOCUMENT
+%% =====================================
+
+%% Begin main.tex
+\begin{document}
+
+%% =====================================
+%% COVER PAGE
+%% =====================================
+
+\subfile{content/front-matter/01-frontpage}
+
+%% ALTERNATIVE: Add custom background image for cover page
+%% Comment out if not using custom background
+% \AddToShipoutPictureBG*{%
+  % \includegraphics[width=\paperwidth, height=\paperheight]{%
+  % }%
+% }
+
+%% Blank page after cover (for two-sided printing)
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+
+%% =====================================
+%% FRONT MATTER
+%% =====================================
+%% Front matter: preliminary pages before main content
+%% Page numbering: Roman numerals (i, ii, iii, ...)
+
+\frontmatter
+\pagestyle{customizedfancy}
+
+%% Set page numbering to Roman numerals
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+%% =====================================
+%% ACKNOWLEDGMENTS
+%% =====================================
+%% Thank people who contributed to your thesis
+
+\subfile{content/front-matter/02-acknowledgments}
+
+%% =====================================
+%% TABLE OF CONTENTS
+%% =====================================
+
+\cleardoublepage
+\phantomsection % For hyperref to create correct bookmark
+\setcounter{tocdepth}{1} % Show up to sections (adjust as needed: 0=chapters, 1=sections, 2=subsections)
+
+\tableofcontents
+\addcontentsline{toc}{part}{Table of Contents} % Add to TOC
+
+%% Horizontal line separator
+\noindent\makebox[\textwidth]{\hrulefill}
+
+%% =====================================
+%% LIST OF FIGURES
+%% =====================================
+
+\cleardoublepage
+\phantomsection
+\listoffigures
+\addcontentsline{toc}{part}{List of Illustrations}
+
+%% Horizontal line separator
+\noindent\makebox[\textwidth]{\hrulefill}
+
+%% =====================================
+%% LIST OF MAPS
+%% =====================================
+
+\cleardoublepage
+\phantomsection
+\listof{map}{List of Maps}
+\addcontentsline{toc}{part}{List of Maps}
+
+%% Horizontal line separator
+\noindent\makebox[\textwidth]{\hrulefill}
+
+%% =====================================
+%% LIST OF TABLES
+%% =====================================
+
+\cleardoublepage
+\phantomsection
+\listoftables
+\addcontentsline{toc}{part}{List of Tables}
+
+%% Horizontal line separator
+\noindent\makebox[\textwidth]{\hrulefill}
+
+%% =====================================
+%% LIST OF EQUATIONS
+%% =====================================
+
+    \cleardoublepage
+    \phantomsection
+\listofequations
+    \addcontentsline{toc}{part}{List of Equations}
+
+%% Horizontal line separator
+\noindent\makebox[\textwidth]{\hrulefill}
+
+%% =====================================
+%% HOW TO CITE THIS DOCUMENT
+%% =====================================
+%% Optional: Include citation information
+
+\subfile{content/front-matter/03-cite}
+
+%% =====================================
+%% FOREWORD (PREFACE)
+%% =====================================
+%% Optional preliminary sections
+
+\subfile{content/front-matter/04-foreword}
+
+%% =====================================
+%% GENERAL INTRODUCTION
+%% =====================================
+
+\cleardoublepage
+\subfile{content/main-matter/introduction}
+
+%% =====================================
+%% MAIN MATTER
+%% =====================================
+%% Main content: chapters of the thesis
+%% Page numbering: Arabic numerals
+
+\mainmatter
+%\pagestyle{customizedfancy}
+
+%% Reset page numbering to Arabic
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+%% =====================================
+%% PART I
+%% =====================================
+
+%% Introduction to Part I
+\subfile{content/main-matter/part1/introduction}
+
+%% Chapter 1
+\subfile{content/main-matter/chap1/content}
+
+%% Chapter 2
+\subfile{content/main-matter/chap2/content}
+
+%% Conclusion to Part I
+\subfile{content/main-matter/part1/conclusion}
+
+%% =====================================
+%% GENERAL CONCLUSION
+%% =====================================
+\subfile{content/main-matter/conclusion}
+
+%% =====================================
+%% BIBLIOGRAPHY
+%% =====================================
+% \subfile{content/back-matter/95-bibliography}
+
+%% =====================================
+%% BACK MATTER
+%% =====================================
+%% Back matter: indices, glossaries, appendices
+%% Chapters are unnumbered but still in TOC
+
+\backmatter
+
+%% =====================================
+%% AUTHOR INDEX
+%% =====================================
+%% Alphabetical index of cited authors
+\subfile{content/back-matter/96-index}
+
+%% =====================================
+%% LIST OF ACRONYMS
+%% =====================================
+\subfile{content/back-matter/97-acronyms}
+
+%% =====================================
+%% GLOSSARY
+%% =====================================
+\subfile{content/back-matter/98-glossary}
+
+%% =====================================
+%% APPENDICES
+%% =====================================
+\subfile{content/back-matter/appendices/00-first-page}
+%%
+\subfile{content/back-matter/appendices/01-appendix-a}
+%%
+\subfile{content/back-matter/appendices/02-appendix-b}
+%%
+\subfile{content/back-matter/appendices/03-appendix-c}
+%%
+\subfile{content/back-matter/appendices/04-appendix-d}
+%%
+\subfile{content/back-matter/appendices/05-appendix-e}
+%%
+\subfile{content/back-matter/appendices/06-appendix-f}
+%%
+\subfile{content/back-matter/appendices/07-appendix-g}
+
+%% =====================================
+%% ABSTRACT
+%% =====================================
+\subfile{content/back-matter/99-abstract}
+
+%% End main.tex
+    \end{document}

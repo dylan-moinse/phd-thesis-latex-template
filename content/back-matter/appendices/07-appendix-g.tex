@@ -1,0 +1,30 @@
+%% =====================================
+%% APPENDIX G
+%% =====================================
+%% Description: Integrate Appendix G
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/07-appendix-f.tex
+    \begin{document}
+
+    \newpage
+
+%% Appendix G
+\section*{Appendix~G: Structure of the \texttt{extra/} \latexword{LaTeX} Folder}
+    \label{appendix:g}
+    %\addcontentsline{toc}{chapter}{}
+    \addcontentsline{toc}{section}{Appendix~G: Structure of the Extra Folder}
+
+%% Force numbering
+\renewcommand{\thefigure}{G.\arabic{figure}}
+\renewcommand{\themap}{G.\arabic{map}}
+\renewcommand{\thetable}{G.\arabic{table}}
+\renewcommand{\theequation}{G.\arabic{equation}}
+
+%% Diagram Appendix G
+\subfile{../../../elements/appendices/figures/figG1}
+
+%% End content/back-matter/appendices/07-appendix-g.tex
+    \end{document}

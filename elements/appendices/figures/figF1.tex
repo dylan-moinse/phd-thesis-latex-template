@@ -1,0 +1,132 @@
+%% =====================================
+%% FIGURE F1
+%% =====================================
+%% Description: Integrate a figure
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin elements/appendices/figures/figF1.tex
+    \begin{document}
+
+\begin{figure}[ht]
+    \centering
+    %%
+\begin{tikzpicture}[
+    % General parameters
+    %%
+    node distance=0.05cm and 1cm,
+    %%
+    % Nodes
+    %%
+    root/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    folder/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    file/.style={
+        rectangle,
+        draw=none, fill=white,
+        minimum height=0.5cm, minimum width=2.5cm,
+        font=\ttfamily\footnotesize,
+        inner sep=4pt,
+        text=black!60
+    },
+    %%
+    % Line style
+    %%
+    line/.style={
+        line width=0.1pt,
+        gray!15
+    }
+]
+%%
+% Branch 1: asset
+\node[root] (root) {asset/};
+%%
+% Branch 2: asset subfolders and files
+%%
+\node[file, right=of root] (thesiscls) {thesis.cls};
+%%
+\node[folder, below=0.5cm of thesiscls] (style) {style/};
+%%
+\node[folder, below=4cm of style] (bibfolder) {bib/};
+%%
+%%
+%% Branch 3: style subfiles
+\node[file, right=of style] (colorsty) {color.sty};
+%%
+\node[file, below=of colorsty] (fontsty) {font.sty};
+%%
+\node[file, below=of fontsty] (bibsty) {bib.sty};
+%%
+\node[file, below=of bibsty] (headersty) {header.sty};
+%%
+\node[file, below=of headersty] (figsty) {fig.sty};
+%%
+\node[file, below=of figsty] (sectionsty) {section.sty};
+%%
+\node[folder, below=of sectionsty] (fonts) {fonts/};
+%%
+%%
+%% Branch 3: bib subfiles
+\node[file, right=of bibfolder] (refbib) {references.bib};
+%%
+%%
+%% Links for asset
+%%
+\draw[line] (root.east) -- (thesiscls.west);
+%%
+\draw[line] (root.east) -- (style.west);
+%%
+\draw[line] (root.east) -- (bibfolder.west);
+%%
+%%
+%% Links for style
+%%
+\draw[line] (style.east) -- (colorsty.west);
+%%
+\draw[line] (style.east) -- (fontsty.west);
+%%
+\draw[line] (style.east) -- (bibsty.west);
+%%
+\draw[line] (style.east) -- (headersty.west);
+%%
+\draw[line] (style.east) -- (figsty.west);
+%%
+\draw[line] (style.east) -- (sectionsty.west);
+%%
+\draw[line] (style.east) -- (fonts.west);
+%%
+%%
+%% Links for bib
+%%
+\draw[line] (bibfolder.east) -- (refbib.west);
+%%
+\end{tikzpicture}
+    %%
+    \vspace{0.5cm}
+    %%
+    \caption{Appendix---Structure of the \texttt{asset/} \latexword{LaTeX} Folder}
+    \label{fig:appendices-F1}
+    %%
+    \vspace{5pt}
+    \begin{flushright}\scriptsize{
+        (see \hyperref[fig:introduction-01]{Figure~\ref{fig:introduction-01}},
+   \hyperref[fig:introduction-01]{p.}~\pageref{fig:introduction-01})
+    }\end{flushright}
+\end{figure}
+
+%% End elements/appendices/figures/figF1.tex
+    \end{document}

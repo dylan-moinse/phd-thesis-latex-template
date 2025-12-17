@@ -1,0 +1,74 @@
+%% =====================================
+%% FIGURE G1
+%% =====================================
+%% Description: Integrate a figure
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin elements/appendices/figures/figG1.tex
+    \begin{document}
+
+\begin{figure}[ht]
+    \centering
+    %%
+\begin{tikzpicture}[
+    % General parameters
+    %%
+    node distance=0.05cm and 1cm,
+    %%
+    % Nodes
+    %%
+    root/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    folder/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    %%
+    % Line style
+    %%
+    line/.style={
+        line width=0.1pt,
+        gray!15
+    }
+]
+%%
+% Branch 1: extra
+\node[root] (root) {extra/};
+%%
+% Branch 2: extra subfolders
+%%
+\node[folder, right=of root] (logo) {logo/};
+%%
+%%
+%% Links for extra
+%%
+\draw[line] (root.east) -- (logo.west);
+%%
+\end{tikzpicture}
+    %%
+    \vspace{0.5cm}
+    %%
+    \caption{Appendix---Structure of the \texttt{extra/} \latexword{LaTeX} Folder}
+    \label{fig:appendices-G1}
+    %%
+    \vspace{5pt}
+    \begin{flushright}\scriptsize{
+        (see \hyperref[fig:introduction-01]{Figure~\ref{fig:introduction-01}},
+   \hyperref[fig:introduction-01]{p.}~\pageref{fig:introduction-01})
+    }\end{flushright}
+\end{figure}
+
+%% End elements/appendices/figures/figG1.tex
+    \end{document}

@@ -1,0 +1,230 @@
+%% =====================================
+%% SECTION FORMATTING AND BACKGROUNDS
+%% =====================================
+%% Description: This package customizes Part/Chapter title pages
+
+%% Usage in thesis.cls:
+%% \RequirePackage{asset/style/section}
+
+%% =====================================
+%% REQUIRED PACKAGES
+%% =====================================
+\NeedsTeXFormat{LaTeX2e} % Require LaTeX2e
+
+%% titlesec: redefine the formatting of \part and \chapter titles
+\RequirePackage{titlesec}
+
+%% =========================
+%% TOGGLES
+%% =========================
+\newif\ifpartbg % Create boolean switch \ifpartbg for Part background pages
+\partbgfalse % Default: Part background disabled
+\newcommand{\enablepartbg}{\global\partbgtrue} % enable Part background globally
+\newcommand{\disablepartbg}{\global\partbgfalse} % disable Part background globally
+
+\newif\ifchapterbg % Create boolean switch \ifchapterbg for Chapter background pages
+\chapterbgfalse % Default: Chapter background disabled
+\newcommand{\enablechapterbg}{\global\chapterbgtrue} % enable Chapter background globally
+\newcommand{\disablechapterbg}{\global\chapterbgfalse} % disable Chapter background globally
+
+%% =========================
+%% SOURCES
+%% =========================
+\def\partimagesource{} % Storage macro for optional Part source text (empty by default)
+\newcommand{\setpartsource}[1]{\gdef\partimagesource{#1}} % Define Part source text
+
+\def\chapterimagesource{} % Storage macro for optional Chapter source text
+\newcommand{\setchaptersource}[1]{\gdef\chapterimagesource{#1}} % Define Chapter source text
+
+%% =========================
+%% INTERNAL STORAGE
+%% =========================
+\def\currentpartlabel{} % Holds the computed Part label
+\def\currentparttitle{} % Holds the Part title argument
+
+\def\currentchapterlabel{} % Holds the computed Chapter label
+\def\currentchaptertitle{} % Holds the Chapter title argument
+
+%% =========================
+%% HELPERS
+%% =========================
+
+% \ThesisFullWidthBand draws a centered, full-page-width translucent band
+\newcommand{\ThesisFullWidthBand}[3]{%
+  \node[
+    fill=white, % Band background color
+    fill opacity=1, % Transparency of the band fill
+    text opacity=1, % Keep text fully opaque
+    minimum width=\paperwidth, % Make the band span the full page width
+    inner xsep=0pt, % No horizontal padding at node level
+    inner ysep=1.2cm, % Vertical padding to control band height
+    outer sep=0pt, % No outer spacing
+    anchor=center % Anchor the node at its center
+  ] at (current page.center) {
+    \begin{minipage}{0.82\paperwidth} % Limit text width so long titles remain readable
+      \centering % Center label and title horizontally
+      #1\color{customizedcolor} % Apply font settings and the template accent color
+      \ifx#2\empty % If label is empty
+        #3
+      \else % Otherwise
+        #2\par\vspace{0.8cm}#3
+      \fi
+    \end{minipage}
+  };
+}
+
+% \ThesisSourceCartouche draws an auto-width cartouche at the bottom-right corner
+\newcommand{\ThesisSourceCartouche}[1]{
+  \node[
+    fill=white, % Cartouche background color
+    fill opacity=1, % Slight transparency for a softer overlay
+    text opacity=1, % Text remains fully opaque
+    rounded corners=3pt, % Rounded corners for a modern look
+    inner xsep=10pt, % Horizontal padding inside the cartouche
+    inner ysep=6pt, % Vertical padding inside the cartouche
+    outer sep=0pt, % No external spacing
+    anchor=south east, % Anchor at bottom-right corner of the node
+    align=right % Right-align multiline source text
+  ] at ([xshift=-1cm,yshift=1cm]current page.south east) {
+    \scriptsize\textcolor{customizedcolor}{#1} % Set small font size and accent color for the source
+  };
+}
+
+%% =========================
+%% PART BACKGROUND
+%% =========================
+\newcommand{\addpartbackground}{
+  \ifpartbg % Only run if Part backgrounds are enabled
+    \AddToShipoutPictureBG*{
+      \begin{tikzpicture}[remember picture, overlay] % Draw on the current page at shipout
+        \fill[customizedcolor] (current page.south west) rectangle (current page.north east); % Full-page color fill
+        \ThesisFullWidthBand{\Huge\bfseries}{\currentpartlabel}{\currentparttitle} % Centered band with label/title
+      \end{tikzpicture}
+    }
+    \ifx\partimagesource\empty\else
+      \AddToShipoutPictureFG*{
+        \begin{tikzpicture}[remember picture, overlay]
+          \ThesisSourceCartouche{\partimagesource}
+        \end{tikzpicture}
+      }
+    \fi
+    \global\partbgfalse % Reset the toggle so only the next Part page gets the background
+  \fi
+}
+
+%% =========================
+%% CHAPTER BACKGROUND
+%% =========================
+\newcommand{\addchapterbackground}{
+  \ifchapterbg % Only run if Chapter backgrounds are enabled
+    \AddToShipoutPictureBG*{
+      \begin{tikzpicture}[remember picture, overlay]
+        \fill[customizedcolor] (current page.south west) rectangle (current page.north east); % Full-page color fill
+        \ThesisFullWidthBand{\huge\bfseries}{\currentchapterlabel}{\currentchaptertitle} % Band with chapter label/title
+      \end{tikzpicture}
+    }
+    \ifx\chapterimagesource\empty\else
+      \AddToShipoutPictureFG*{
+        \begin{tikzpicture}[remember picture, overlay]
+          \ThesisSourceCartouche{\chapterimagesource}
+        \end{tikzpicture}
+      }
+    \fi
+    \global\chapterbgfalse % Reset the toggle so only the next Chapter page gets the background
+  \fi
+}
+
+%% =========================
+%% TITLE PROCESSING
+%% =========================
+
+% Capture the Part title text
+\newcommand{\processparttitle}[1]{
+  \gdef\currentparttitle{#1} % Store the current Part title text
+  \ifpartbg
+    \addpartbackground % Draw the Part background/band at shipout for this page
+    \par\vspace*{0pt}\null\par % Provide a minimal typeset box
+  \else
+    {\centering\Huge\bfseries\color{customizedcolor} % Fallback: standard centered title
+      \ifx\currentpartlabel\empty
+        #1\par % Starred part: title only
+      \else
+        \currentpartlabel\par\vspace{1cm}#1\par % Numbered part: label + title with spacing
+      \fi
+    }
+  \fi
+}
+
+% Same logic for Chapter titles
+\newcommand{\processchaptertitle}[1]{
+  \gdef\currentchaptertitle{#1} % Store the current Chapter title text
+  \ifchapterbg
+    \addchapterbackground % Draw chapter background/band at shipout
+    \par\vspace*{0pt}\null\par % Minimal output for titlesec
+  \else
+    {\centering\huge\bfseries\color{customizedcolor} % Fallback: normal centered chapter title
+      \ifx\currentchapterlabel\empty
+        #1\par
+      \else
+        \currentchapterlabel\par\vspace{1cm}#1\par
+      \fi
+    }
+  \fi
+}
+
+%% =========================
+%% TITLEFORMATS
+%% =========================
+
+% Numbered \part: store label like "Part I" then process the title
+\titleformat{\part}[block]
+  {}
+  {\gdef\currentpartlabel{\partname\ \thepart}} % Save the computed Part label
+  {0pt}
+  {\processparttitle}
+
+% Starred \part*: no label, title only
+\titleformat{name=\part,numberless}[block]
+  {}
+  {\gdef\currentpartlabel{}} % Clear the label for starred parts
+  {0pt}
+  {\processparttitle}
+
+% Numbered \chapter
+\titleformat{\chapter}[block]
+  {}
+  {\gdef\currentchapterlabel{\chaptertitlename\ \thechapter}} % Save chapter label
+  {0pt}
+  {\processchaptertitle}
+
+% Starred \chapter*: no label
+\titleformat{name=\chapter,numberless}[block]
+  {}
+  {\gdef\currentchapterlabel{}} % Clear label for starred chapters
+  {0pt}
+  {\processchaptertitle}
+
+% Regular section formatting (no background pages here)
+\titleformat{\section}[hang]
+  {\normalfont\Large\bfseries\color{customizedcolor}\justifying} % Font + color + justified text
+  {\thesection} % Printed label (section number)
+  {1em} % Spacing between label and title
+  {} % Code before title text (unused here)
+
+% Regular subsection formatting
+\titleformat{\subsection}[hang]
+  {\normalfont\large\bfseries\color{customizedcolor}\justifying}
+  {\thesubsection}
+  {1em}
+  {}
+
+%% =========================
+%% SPACING
+%% =========================
+\titlespacing{\chapter}{0pt}{0pt}{20pt} % Left indent, space before, space after for chapters
+\titlespacing{\section}{0pt}{15pt}{15pt} % Section spacing: moderate vertical separation
+\titlespacing{\subsection}{20pt}{\parskip}{-\parskip} % Subsection indent + compact after-spacing
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip} % Subsubsection spacing
+
+%% End asset/style/section.sty
+\endinput

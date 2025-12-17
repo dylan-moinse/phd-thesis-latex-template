@@ -1,0 +1,64 @@
+%% =====================================
+%% SECTION 1
+%% =====================================
+%% Description: Write your chapter 2 (section 1)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/main-matter/chap2/section1.tex
+    \begin{document}
+
+%% =====================================
+%% SECTION 1
+%% =====================================
+    \newpage
+    \needspace{1\baselineskip}
+    %\addcontentsline{toc}{section}{Title of Section~1}
+    \sectionheader{Title of Section~1}
+\section{Title of Section~1}
+    \label{chap2:section1}
+    \markright{Title of Section~1}{}
+
+    % Lipsum 1 (with Lettrine \mylettrine{}{} and \hyperref[]{})
+\mylettrine{F}{irst} \loremlong~Lorem ipsum dolor sit amet (see \hyperref[fig:chap2-01]{Figure}~\ref{fig:chap2-01}, \hyperref[fig:chap2-01]{p.}~\pageref{fig:chap2-01}). %%V1
+
+%% =====================================
+%% SUBSECTION 1.1
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~1.1}
+    \label{chap2:section1-sub1}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 2 (with Autocite \autocite{})
+\loremmedium~Lorem ipsum dolor sit amet \autocite[99]{example2020}. %%V1
+
+    % Fig03
+\subfile{../../../elements/figures/fig03}
+
+    % Lipsum 3 (with Autocites \textcolor{customizedcolor}{\autocites{}{})
+\loremlong~Lorem ipsum dolor sit amet \textcolor{customizedcolor}{\autocites[99]{example2020}[1]{example2021}}. %%V1
+
+%% =====================================
+%% SUBSECTION 1.2
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~1.2}
+    \label{chap2:section1-sub2}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 4 (with Textcite \textcite{})
+\loremmedium~\textcite[10]{example2021} lorem ipsum dolor sit amet. %%V1
+
+    % Lipsum 5
+\loremlong %%V1
+
+%% End content/main-matter/chap2/section1.tex
+    \end{document}

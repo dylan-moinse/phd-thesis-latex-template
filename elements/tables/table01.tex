@@ -1,0 +1,87 @@
+%% =====================================
+%% TABLE 1
+%% =====================================
+%% Description: Integrate a table
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin elements/tables/table01.tex
+    \begin{document}
+
+    % Table 01
+\customizedtable{chap1-01} % Label
+    {Caption of Table~1.1} % Caption
+    {
+    %%
+    %% Number and size of cells
+    %%
+    \begin{tabular}{
+    p{0.2\textwidth} % Column 1
+    p{0.2\textwidth} % Column 2
+    p{0.2\textwidth} % Column 3
+    p{0.2\textwidth} % Column 4
+    p{0.2\textwidth} % Column 5
+    }
+    %%
+    %% Headers
+    %%
+\theader{Column~1} & 
+\theader{Column~2} &
+\theader{Column~3} &
+\theader{Column~4} &
+\theader{Column~5}\\
+    %%
+    \hline
+    %%
+\theader{Row~1} &
+\small{1.00} &
+\small{2.00} &
+\small{3.00} &
+\small{4.00}\\
+    %%
+    \hdashline
+    %%
+\multirow{2}{*}{\theader{Row~2}} &
+\small{1.00} &
+\small{2.00} &
+\small{3.00} &
+\small{4.00}\\
+    %%
+&
+\small{5.00} &
+\small{6.00} &
+\small{7.00} &
+\small{8.00}\\
+    %%
+    \hdashline
+    %%
+\multirow{3}{*}{\theader{Row~3}} &
+\small{1.00} &
+\small{2.00} &
+\small{3.00} &
+\small{4.00}\\
+    %%
+&
+\small{5.00} &
+\small{6.00} &
+\small{7.00} &
+\small{8.00}\\
+    %%
+&
+\small{9.00} &
+\small{10.00} &
+\small{11.00} &
+\small{12.00}\\
+    %%
+    \hline
+    %%
+    \end{tabular}
+    }
+    {Source}
+    {Author} % Author
+    {Year} % Year
+    {\loremshort} % Reading note
+
+%% End elements/tables/table01.tex
+    \end{document}

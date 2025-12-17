@@ -1,0 +1,49 @@
+%% =====================================
+%% ACRONYMS
+%% =====================================
+%% Description: Automatic acronyms
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/back-matter/97-acronyms.tex
+    \begin{document}
+
+%% =====================================
+%% DEFINITIONS
+%% =====================================
+
+%% PhD acronym
+\newacronym[description={Doctor of Philosophy.}]{PhD}{PhD}{acronym1}
+
+%% First acronym
+\newacronym[description={This is an acronym.}]{A1}{A1}{acronym1}
+
+%% Second acronym
+\newacronym[description={This is another acronym.}]{A2}{A2}{acronym2}
+
+%% Third acronym
+\newacronym[description={And a third acronym.}]{B1}{B1}{acronym3}
+
+%% =====================================
+%% PRINT ACRONYMS
+%% =====================================
+
+    \cleardoublepage
+    \markright{Acronyms}{}
+    %\phantomsection
+    \addcontentsline{toc}{part}{List of Acronyms}
+    \label{part:acronyms}
+
+%% Make acronyms bold in the list
+    \renewcommand{\glsnamefont}[1]{\textbf{#1}}
+
+%% Print acronym list
+\printglossary[
+  type=\acronymtype,
+  title=Abbreviations and Acronyms,
+  style=long
+]
+
+%% End content/back-matter/97-acronyms.tex
+    \end{document}

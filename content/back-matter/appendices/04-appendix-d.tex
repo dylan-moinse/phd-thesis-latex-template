@@ -1,0 +1,30 @@
+%% =====================================
+%% APPENDIX D
+%% =====================================
+%% Description: Integrate Appendix C
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/04-appendix-d.tex
+    \begin{document}
+
+    \newpage
+
+%% Appendix D
+\section*{Appendix~D: Structure of the \texttt{content/} \latexword{LaTeX} Folder}
+    \label{appendix:d}
+    %\addcontentsline{toc}{chapter}{}
+    \addcontentsline{toc}{section}{Appendix~D: Structure of the Content Folder}
+
+%% Force numbering
+\renewcommand{\thefigure}{D.\arabic{figure}}
+\renewcommand{\themap}{D.\arabic{map}}
+\renewcommand{\thetable}{D.\arabic{table}}
+\renewcommand{\theequation}{D.\arabic{equation}}
+
+%% Diagram Appendix D
+\subfile{../../../elements/appendices/figures/figD1}
+
+%% End content/back-matter/appendices/04-appendix-d.tex
+    \end{document}

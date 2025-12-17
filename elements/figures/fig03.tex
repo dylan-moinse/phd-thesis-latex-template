@@ -1,0 +1,47 @@
+%% =====================================
+%% FIGURE 3
+%% =====================================
+%% Description: Integrate two figures
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin elements/figures/fig03.tex
+    \begin{document}
+
+    % Fig03
+\begin{figure}[ht]\vspace*{4pt}
+    \centering
+    %%
+    % Subfigure (a)
+    \begin{subfigure}[t]{0.48\textwidth} % Call size
+        \customizedfigureinline{} % See fig.sty
+            {elements/figures/pic/fig02.pdf} % Insert the first fig
+            {1\textwidth} % Size
+            {chap2-02a}
+    \end{subfigure}
+    %%
+    \hfill
+    %%
+    % Subfigure (b)
+    \begin{subfigure}[t]{0.48\textwidth} % Call size
+        \customizedfigureinline{} % See fig.sty
+            {elements/figures/pic/fig03.pdf} % Insert the second fig
+            {1\textwidth} % Size
+            {chap2-02b}
+    \end{subfigure}
+    %%
+    % Main caption
+    \caption{Caption of Fig.~2.1} % Caption
+    \label{fig:chap2-01} % Label
+    %%
+    % One source
+    \vspace{5pt}
+    \begin{flushright}\scriptsize{
+        Source: \textcolor{customizedcolor}{Author (Year)} % Source
+    }\end{flushright}
+    %%
+\end{figure}
+
+%% End elements/figures/fig03.tex
+    \end{document}

@@ -1,0 +1,112 @@
+%% =====================================
+%% CHAPTER 2
+%% =====================================
+%% Description: Write your chapter 2 (introduction)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/main-matter/chap2/introduction.tex
+    \begin{document}
+
+    % Background Chapter 2
+\enablechapterbg
+\setchaptersource{Photography: Author (Year)}
+
+    \chapterheader{Chapter~2 Short Title}
+\chapter{Title of Chapter~2}
+    \label{chapter:2}
+    %\addcontentsline{toc}{chapter}{}
+
+    % Reinitialize section numbering (only for Chapter 1)
+\setcounter{section}{0}
+
+    % ToC Chapter 2
+    \cleardoublepage
+    \setcounter{tocdepth}{2}
+    \renewcommand{\localcontentsname}{Table of Contents for Chapter~2}
+\localtableofcontents
+
+    % Graphical abstract Chapter 2
+    \newpage
+\section*{Graphical Abstract for Chapter~2}
+    \label{chap2:graphical-abstract}
+    \markright{Graphical Abstract for Chapter~2}{}
+
+\begin{figure}[h!]\vspace*{4pt}
+        \caption*{Graphical Abstract Title}
+        \centerline{\includegraphics[width=1\textwidth]
+        {elements/graphical-abstract/chap2} % Graphical abstract
+        }
+        \vspace{5pt}
+    \end{figure}
+
+    % Abstract
+    \newpage
+    \begin{tcolorbox}[colback=white!5!white,
+                      colframe=blue!75!blue,
+                      title=
+                      \bigskip
+                      \center{\textbf{Abstract for Chapter~2}}
+                      \\
+                      \raggedright{\small{Chapter~2 including \pagedifference{chapter:2}{part1:conclusion} pages, with \pagedifference{chap2:bibliography}{part1:conclusion} page of references}}
+                      \bigskip]
+    %%
+    \vspace{0.5cm}
+    %%
+\Large{\textbf{\textcolor{blue}{Abstract:}}}
+    \\
+    \footnotesize{
+\loremmedium
+    \\
+\loremlong
+    }
+    %%
+    \vspace{0.5cm}
+    %%
+    \tcblower
+    %%
+    \vspace{0.5cm}
+    %%
+\Large{\textcolor{blue}{\textbf{Keywords:}}}
+    \\
+    \footnotesize{
+Keyword1;
+Keyword2;
+Keyword3
+    }
+    %%
+    \vspace{0.5cm}
+    %%
+    \end{tcolorbox}
+
+%% =====================================
+%% INTRODUCTION
+%% =====================================
+    \newpage
+    \needspace{1\baselineskip}
+    \addcontentsline{toc}{section}{Introduction of Chapter~2}
+    \sectionheader{Introduction of Chapter~2}
+\section*{Introduction of Chapter~2}
+    \label{chap2:introduction}
+    \markright{Introduction of Chapter~2}{}
+
+    % Citation
+    \begin{displayquote}
+\enquote{\textsl{\loremshort} [\dots] \textsl{\loremshort} [\dots] \textsl{\loremshort} [\dots] \autocite[750]{moinse2025}
+.}%V1%
+
+\textcite{moinse2025}. \textsl{Le modèle urbain du Transit-Oriented Development revisité par la mobilité individuelle légère émergente. Une investigation dans la région Hauts-de-France}, Doctoral Thesis, Gustave Eiffel University, p.~1--750. \url{https://hal.science/tel-05160113}%V1%
+    \end{displayquote}
+    %%
+    \vspace{0.5cm}
+    %%
+
+    % Lipsum 1 (with Lettrine \mylettrine{}{})
+\mylettrine{I}{ntroduction}~\loremmedium %%V1
+
+    % Lipsum 2 (with Acronym \acrshort{} or \acrlong{} or \acrfull{})
+\loremmedium~Lorem ipsum dolor sit amet, \acrshort{A1}. %%V1
+
+%% End content/main-matter/chap2/introduction.tex
+    \end{document}

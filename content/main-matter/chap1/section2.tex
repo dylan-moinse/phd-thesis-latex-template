@@ -1,0 +1,64 @@
+%% =====================================
+%% SECTION 2
+%% =====================================
+%% Description: Write your chapter 1 (section 2)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/main-matter/chap1/section2.tex
+    \begin{document}
+
+%% =====================================
+%% SECTION 2
+%% =====================================
+    \newpage
+    \needspace{1\baselineskip}
+    %\addcontentsline{toc}{section}{Title of Section~2}
+    \sectionheader{Title of Section~2}
+\section{Title of Section~2}
+    \label{chap1:section2}
+    \markright{Title of Section~2}{}
+
+    % Lipsum 1 (with Lettrine \mylettrine{}{} and \hyperref[]{})
+\mylettrine{S}{ection}~\loremlong~Lorem ipsum dolor sit amet (see \hyperref[map:chap1-01]{Map}~\ref{map:chap1-01}, \hyperref[map:chap1-01]{p.}~\pageref{map:chap1-01}). %%V1
+
+%% =====================================
+%% SUBSECTION 2.1
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~2.1}
+    \label{chap1:section2-sub1}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 2 (with Acronym \acrshort{} or \acrlong{} or \acrfull{})
+\loremmedium~Lorem ipsum dolor sit amet \acrfull{PhD}. %%V1
+
+    % Map01
+\subfile{../../../elements/maps/map01}
+
+    % Lipsum 3 (with Textcite \textcite{})
+\loremlong~\textcite[10]{example2023} and \textcite[7]{example2024} lorem ipsum dolor sit amet. %%V1
+
+%% =====================================
+%% SUBSECTION 2.2
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~2.2}
+    \label{chap1:section2-sub2}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 4 (with Acronym \acrshort{} or \acrlong{} or \acrfull{})
+\loremmedium~\acrshort{PhD} lorem ipsum dolor sit amet. %%V1
+
+    % Lipsum 5
+\loremlong %%V1
+
+%% End content/main-matter/chap1/section2.tex
+    \end{document}

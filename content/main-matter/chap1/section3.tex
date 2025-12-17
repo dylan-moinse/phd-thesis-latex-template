@@ -1,0 +1,67 @@
+%% =====================================
+%% SECTION 3
+%% =====================================
+%% Description: Write your chapter 1 (section 3)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/main-matter/chap1/section3.tex
+    \begin{document}
+
+%% =====================================
+%% SECTION 3
+%% =====================================
+    \newpage
+    \needspace{1\baselineskip}
+    %\addcontentsline{toc}{section}{Title of Section~3}
+    \sectionheader{Title of Section~3}
+\section{Title of Section~3}
+    \label{chap1:section3}
+    \markright{Title of Section~3}{}
+
+    % Lipsum 1 (with Lettrine \mylettrine{}{} and \hyperref[]{})
+\mylettrine{S}{ection}~\loremlong~Lorem ipsum dolor sit amet (see \hyperref[table:chap1-01]{Table}~\ref{table:chap1-01}, \hyperref[table:chap1-01]{p.}~\pageref{table:chap1-01}). %%V1
+
+%% =====================================
+%% SUBSECTION 3.1
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~3.1}
+    \label{chap1:section3-sub1}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 2 (with Acronym \acrshort{} or \acrlong{} or \acrfull{})
+\loremmedium~Lorem ipsum dolor sit amet \acrshort{PhD}. %%V1
+
+    % Table01
+\subfile{../../../elements/tables/table01}
+
+    % Lipsum 3 (with Glossary \gls{} or \glspl{} or \Gls{})
+\loremlong~\Gls{notion1} lorem ipsum dolor sit amet. %%V1
+
+%% =====================================
+%% SUBSECTION 3.2
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~3.2}
+    \label{chap1:section3-sub2}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 4 (with \hyperref[]{})
+\loremmedium~Lorem ipsum dolor sit amet (see \hyperref[eq:chap1-01]{Formula}~\ref{eq:chap1-01}, \hyperref[eq:chap1-01]{p.}~\pageref{eq:chap1-01}). %%V1
+
+    % Equation01
+\subfile{../../../elements/equations/equation01}
+
+    % Lipsum 5
+\loremlong %%V1
+
+%% End content/main-matter/chap1/content.tex
+    \end{document}

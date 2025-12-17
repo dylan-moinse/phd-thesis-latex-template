@@ -1,0 +1,163 @@
+%% =====================================
+%% FIGURE E1
+%% =====================================
+%% Description: Integrate a figure
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin elements/appendices/figures/figE1.tex
+    \begin{document}
+
+\begin{figure}[ht]
+    \centering
+    %%
+\begin{tikzpicture}[
+    % General parameters
+    %%
+    node distance=0.05cm and 1cm,
+    %%
+    % Nodes
+    %%
+    root/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    folder/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    file/.style={
+        rectangle,
+        draw=none, fill=white,
+        minimum height=0.5cm, minimum width=2.5cm,
+        font=\ttfamily\footnotesize,
+        inner sep=4pt,
+        text=black!60
+    },
+    %%
+    % Line style
+    %%
+    line/.style={
+        line width=0.1pt,
+        gray!15
+    }
+]
+%%
+% Branch 1: elements
+\node[root] (root) {elements/};
+%%
+% Branch 2: elements subfolders
+%%
+\node[folder, right=of root] (figures) {figures/};
+%%
+\node[folder, below=2cm of figures] (maps) {maps/};
+%%
+\node[folder, below=1.5cm of maps] (tables) {tables/};
+%%
+\node[folder, below=0.75cm of tables] (equations) {equations/};
+%%
+\node[folder, below=0.75cm of equations] (graphabs) {graphical-abstract/};
+%%
+\node[folder, below=0.75cm of graphabs] (appfig) {appendices/};
+%%
+%%
+%% Branch 3: figures subfiles
+\node[file, right=of figures] (fig1) {fig01.tex};
+%%
+\node[file, below=of fig1] (fig2) {fig02.tex};
+%%
+\node[folder, below=of fig2] (figpic) {pic/};
+%%
+%%
+%% Branch 3: maps subfiles
+\node[file, right=of maps] (map1) {map01.tex};
+%%
+\node[folder, below=of map1] (mappic) {pic/};
+%%
+%%
+%% Branch 3: tables subfiles
+\node[file, right=of tables] (tab1) {table01.tex};
+%%
+%%
+%% Branch 3: equations subfiles
+\node[file, right=of equations] (eq1) {equation01.tex};
+%%
+%%
+%% Branch 3: appendices subfolders
+\node[folder, right=of appfig] (appfigfolder) {figures/};
+%%
+\node[folder, below=of appfigfolder] (appmapsfolder) {maps/};
+%%
+%%
+%% Links for elements
+%%
+\draw[line] (root.east) -- (figures.west);
+%%
+\draw[line] (root.east) -- (maps.west);
+%%
+\draw[line] (root.east) -- (tables.west);
+%%
+\draw[line] (root.east) -- (equations.west);
+%%
+\draw[line] (root.east) -- (graphabs.west);
+%%
+\draw[line] (root.east) -- (appfig.west);
+%%
+%%
+%% Links for figures
+%%
+\draw[line] (figures.east) -- (fig1.west);
+%%
+\draw[line] (figures.east) -- (fig2.west);
+%%
+\draw[line] (figures.east) -- (figpic.west);
+%%
+%%
+%% Links for maps
+%%
+\draw[line] (maps.east) -- (map1.west);
+%%
+\draw[line] (maps.east) -- (mappic.west);
+%%
+%%
+%% Links for tables
+%%
+\draw[line] (tables.east) -- (tab1.west);
+%%
+%%
+%% Links for equations
+%%
+\draw[line] (equations.east) -- (eq1.west);
+%%
+%%
+%% Links for appendices
+%%
+\draw[line] (appfig.east) -- (appfigfolder.west);
+%%
+\draw[line] (appfig.east) -- (appmapsfolder.west);
+%%
+\end{tikzpicture}
+    %%
+    \vspace{0.5cm}
+    %%
+    \caption{Appendix---Structure of the \texttt{elements/} \latexword{LaTeX} Folder}
+    \label{fig:appendices-E1}
+    %%
+    \vspace{5pt}
+    \begin{flushright}\scriptsize{
+        (see \hyperref[fig:introduction-01]{Figure~\ref{fig:introduction-01}},
+   \hyperref[fig:introduction-01]{p.}~\pageref{fig:introduction-01})
+    }\end{flushright}
+\end{figure}
+
+%% End elements/appendices/figures/figE1.tex
+    \end{document}

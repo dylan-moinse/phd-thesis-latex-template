@@ -1,0 +1,45 @@
+%% =====================================
+%% APPENDIX B
+%% =====================================
+%% Description: Integrate Appendix B
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/02-appendix-b.tex
+    \begin{document}
+
+    \newpage
+
+%% Appendix B
+\section*{Title of Appendix~B}
+    \label{appendix:b}
+    %\addcontentsline{toc}{chapter}{}
+    \addcontentsline{toc}{section}{Appendix~B: Title}
+
+%% Force numbering
+\renewcommand{\thefigure}{B.\arabic{figure}}
+\renewcommand{\themap}{B.\arabic{map}}
+\renewcommand{\thetable}{B.\arabic{table}}
+\renewcommand{\theequation}{B.\arabic{equation}}
+
+%% Figure Appendix B
+\customizedfigure{appendix-b:figure1} % Label (see fig.sty for the command)
+    {Appendix---Caption of Fig.~B.1} % Caption
+    {elements/appendices/figures/figB1.pdf} % Insert fig
+    {0.75\textwidth} % Size
+    {Source} % Source
+    {Author} % Author
+    {Year} % Year
+
+%% Map Appendix B
+\customizedmap{appendix-b:map1} % Label (see fig.sty for the command)
+    {Appendix---Caption of Map.~B.1} % Caption
+    {elements/appendices/maps/mapB1.pdf} % Insert fig
+    {0.75\textwidth} % Size
+    {Source} % Source
+    {Author} % Author
+    {Year} % Year
+
+%% End content/back-matter/appendices/02-appendix-b.tex
+    \end{document}

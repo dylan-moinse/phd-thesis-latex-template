@@ -1,0 +1,61 @@
+%% =====================================
+%% SECTION 3
+%% =====================================
+%% Description: Write your chapter 2 (section 3)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/main-matter/chap2/section3.tex
+    \begin{document}
+
+%% =====================================
+%% SECTION 3
+%% =====================================
+    \newpage
+    \needspace{1\baselineskip}
+    %\addcontentsline{toc}{section}{Title of Section~3}
+    \sectionheader{Title of Section~3}
+\section{Title of Section~3}
+    \label{chap2:section3}
+    \markright{Title of Section~3}{}
+
+    % Lipsum 1 (with Lettrine \mylettrine{}{})
+\mylettrine{T}{hird}~\loremlong %%V1
+
+%% =====================================
+%% SUBSECTION 3.1
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~3.1}
+    \label{chap2:section3-sub1}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 2 (with Acronym \acrshort{} or \acrlong{} or \acrfull{})
+\loremmedium~Lorem ipsum dolor sit amet \acrshort{A2}. %%V1
+
+    % Lipsum 3 (with Glossary \gls{} or \glspl{} or \Gls{})
+\loremlong~\Gls{notion2} lorem ipsum dolor sit amet. %%V1
+
+%% =====================================
+%% SUBSECTION 3.2
+%% =====================================
+    \vspace{0.5cm}
+    %%
+    \needspace{1\baselineskip}
+\subsection{Title of Subsection~3.2}
+    \label{chap2:section3-sub2}
+    %%
+    \vspace{0.75cm}
+
+    % Lipsum 4
+\loremshort %%V1
+
+    % Lipsum 5
+\loremlong %%V1
+
+%% End content/main-matter/chap2/section3.tex
+    \end{document}

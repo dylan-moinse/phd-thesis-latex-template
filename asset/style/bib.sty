@@ -1,0 +1,260 @@
+%% =====================================
+%% BIBLIOGRAPHY CONFIGURATION
+%% =====================================
+%% Description: Configure bibliography style and behavior
+%% This file is kept separate for easy bibliography customization
+
+%% Usage in thesis.cls:
+%% \RequirePackage{asset/style/bib}
+
+%% Package used: biblatex (modern, flexible bibliography system)
+%% Backend: biber (recommended) or bibtex (legacy)
+
+%% =====================================
+%% BIBLATEX PACKAGE
+%% =====================================
+%% Description: Modern bibliography management system
+%% Advantages over traditional BibTeX:
+%% - Full Unicode support
+%% - Better customization
+%% - Multiple bibliographies
+%% - Advanced sorting and filtering
+%% - Better localization
+%% - Per-chapter bibliographies
+
+\usepackage[
+  %% =====================================
+  %% BACKEND CONFIGURATION
+  %% =====================================
+  backend=biber, % Bibliography processor (biber or bibtex)
+% biber: Modern, recommended (full features)
+% bibtex: Legacy (limited features)
+  %% =====================================
+  %% CITATION & BIBLIOGRAPHY STYLE
+  %% =====================================
+  style=authoryear, % Main style: author-year citations
+% Produces: (Smith 2020) or Smith (2020)
+% Alternatives:
+% - numeric: [1], [2], [3]
+% - alphabetic: [Smi20]
+% - authortitle: (Smith, "Title")
+% - verbose: Full citation in footnotes
+  %%
+  citestyle=authoryear, % Citation style (can differ from bibliography)
+% Usually same as 'style' for consistency
+  %%
+  %% =====================================
+  %% HYPERLINKS
+  %% =====================================
+  hyperref=true, % Enable hyperlinks in citations
+% Citations become clickable links to bibliography
+  %%
+  %% =====================================
+  %% FIELD DISPLAY OPTIONS
+  %% =====================================
+  url=true, % Display URLs in bibliography
+% Set to false if URLs clutter bibliography
+  %%
+  isbn=true, % Display ISBN numbers
+% Set to false to save space
+%%
+  doi=true, % Display DOI (Digital Object Identifier)
+% Recommended: true (DOIs are permanent links)
+  %%
+  %% =====================================
+  %% NAME FORMATTING
+  %% =====================================
+  giveninits=false, % Use full first names (John Smith)
+% true: Use initials only (J. Smith)
+% Recommendation: false for humanities, true for sciences
+  %%
+  %% =====================================
+  %% CITATION LIMITS
+  %% =====================================
+  maxcitenames=2, % Maximum authors shown in citations
+% (Smith et al. 2020) if >2 authors
+% Common values: 2-3
+  %%
+  maxbibnames=50, % Maximum authors shown in bibliography
+% 50 = show all authors (recommended)
+% Lower values: truncate long author lists
+  %%
+  %% =====================================
+  %% BACK REFERENCES
+  %% =====================================
+  backref=true, % Add "cited on pages X, Y, Z" to each entry
+% Helps readers find where sources are used
+% Set to false for final version if not wanted
+  %%
+  %% =====================================
+  %% COMPATIBILITY
+  %% =====================================
+  natbib=true,% Enable natbib compatibility commands
+% Allows using \citep{}, \citet{}, etc.
+% Useful if migrating from natbib
+  %%
+  %% =====================================
+  %% CHAPTER BIBLIOGRAPHIES
+  %% =====================================
+  refsection=chapter, % Create separate bibliography per chapter
+% Options:
+% - none: Single bibliography at end
+% - chapter: One per chapter
+% - section: One per section
+% Use with \printbibliography[section=X]
+  %%
+  %%=====================================
+  %% AUTOMATIC INDEX
+  %% =====================================
+  indexing=cite, % Automatic author indexing
+  %%
+]{biblatex}
+
+%% =====================================
+%% DATE FIELD CLEANING
+%% =====================================
+%% Description: Remove unnecessary date fields from bibliography
+%% Many .bib files include day/month which are usually not needed
+
+%% Remove month and day fields from all entries
+%% Result: Only year is displayed
+%% Example: "2020" instead of "March 15, 2020"
+\AtEveryBibitem{
+  \clearfield{month} % Remove month field
+  \clearfield{day} % Remove day field
+}
+
+%% =====================================
+%% DOI/URL PRIORITY
+%% =====================================
+%% Description: Show DOI preferentially; if no DOI, show URL
+%% Avoids showing both DOI and URL (which is redundant)
+
+\renewbibmacro*{doi+eprint+url}{%
+  \iftoggle{bbx:doi} % If DOI display is enabled
+    {
+      \iffieldundef{doi} % Check if DOI field is empty
+      {
+        % No DOI available: show URL instead
+        \iftoggle{bbx:url}
+          {\usebibmacro{url+urldate}} % Display URL and access date
+          {}
+      }
+      {
+        % DOI available: show DOI only (not URL)
+        \printfield{doi} % Display DOI
+      }
+    }
+    {}
+}
+
+%% =====================================
+%% BACK REFERENCE STRINGS
+%% =====================================
+%% Description: Customize text for back references
+%% Default in English: "cit. on pp."
+%% Customized for clarity
+
+\DefineBibliographyStrings{english}{%
+  backrefpage = {cited on page}, % Singular: "cited on page 5"
+  backrefpages = {cited on pages}, % Plural: "cited on pages 5, 7, 12"
+}
+
+%% For French thesis (uncomment if needed):
+% \DefineBibliographyStrings{french}{%
+%   backrefpage = {cité à la page},
+%   backrefpages = {cité aux pages},
+% }
+
+%% =====================================
+%% BIBLIOGRAPHY RESOURCE
+%% =====================================
+\addbibresource{asset/bib/references.bib}
+
+%% =====================================
+%% AUTOMATIC AUTHOR INDEXING (SIMPLE)
+%% =====================================
+\DeclareIndexNameFormat{default}{%
+  \nameparts{#1}%
+  \index[authors]{\namepartfamily|hyperpage}%
+}
+
+\renewbibmacro*{citeindex}{%
+  \ifciteindex{%
+    \ifnameundef{author}
+      {\ifnameundef{editor}{}{\indexnames{editor}}}%
+      {\indexnames{author}}%
+  }{}%
+}
+
+%% Add additional bibliography files (uncomment as needed):
+% \addbibresource{asset/bib/references.bib}
+% \addbibresource{articles.bib}
+% \addbibresource{books.bib}
+
+%% Using glob pattern to include all .bib files in a directory:
+% \addbibresource[glob]{asset/bib/*.bib}
+
+%% =====================================
+%% ADVANCED CUSTOMIZATION OPTIONS
+%% =====================================
+
+%% =====================================
+%% SORTING OPTIONS
+%% =====================================
+%% Description: Control bibliography sort order
+%% Uncomment one to change sorting:
+
+% \ExecuteBibliographyOptions{sorting=nty}  % Name, Title, Year (default for authoryear)
+% \ExecuteBibliographyOptions{sorting=nyt}  % Name, Year, Title
+% \ExecuteBibliographyOptions{sorting=nyvt} % Name, Year, Volume, Title
+% \ExecuteBibliographyOptions{sorting=anyt} % Alphabetic label, Name, Year, Title
+% \ExecuteBibliographyOptions{sorting=none} % Order of citation (for numeric styles)
+% \ExecuteBibliographyOptions{sorting=ynt}  % Year, Name, Title (chronological)
+
+%% =====================================
+%% CITATION COMMANDS
+%% =====================================
+%% Description: Available citation commands (examples)
+
+%% Basic commands:
+%% \autocite[page]{key} = (Author1, year1, page)
+%% \autocites[page]{key1}[page]{key2} = (Author1, year1, page1; Author2, year2, page2)
+%% \textcite[page]{key} = Author1 (year1, page)
+
+%% =====================================
+%% BIBLIOGRAPHY PRINTING
+%% =====================================
+%% Description: How to print bibliography in document
+
+%% Basic usage (at end of document):
+%% \printbibliography
+
+%% With custom title:
+%% \printbibliography[title={References}]
+
+%% Add to table of contents:
+%% \printbibliography[heading=bibintoc]
+
+%% Per-chapter bibliography:
+%% In each chapter:
+%% \printbibliography[heading=subbibliography,segment=\therefsegment]
+
+%% =====================================
+%% BIB FILE STRUCTURE
+%% =====================================
+%% Example entries for DM.bib:
+
+%% @article{author1year1,
+%%   author = {Name1, Surname1 and Name2, Surname2},
+%%   title = {Title1},
+%%   journal = {Journal1},
+%%   year = {Year1},
+%%   volume = {Volume1},
+%%   number = {Number1},
+%%   pages = {pagemin--pagemax},
+%%   doi = {10.X},
+%% }
+
+%% End asset/style/bib.sty
+\endinput

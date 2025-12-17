@@ -1,0 +1,130 @@
+%% =====================================
+%% FIGURE 1
+%% =====================================
+%% Description: Integrate a figure
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin elements/figures/fig01.tex
+    \begin{document}
+
+\begin{figure}[ht]
+    \centering
+    %%
+\begin{tikzpicture}[
+    %% General parameters
+    %%
+    node distance=0.4cm and 1.8cm,
+    %%
+    %% Node style
+    %%
+    root/.style={
+        rectangle,
+        draw=none, fill=gray!15,
+        minimum height=1cm, minimum width=3cm,
+        font=\sffamily\bfseries,
+        inner sep=6pt,
+        text=customizedcolor!100
+    },
+    folder/.style={
+        rectangle,
+        draw=none, fill=gray!5,
+        minimum height=0.65cm, minimum width=2.8cm,
+        font=\sffamily\small,
+        inner sep=5pt,
+        text=black!70
+    },
+    file/.style={
+        rectangle,
+        draw=none, fill=white,
+        minimum height=0.5cm, minimum width=2.5cm,
+        font=\ttfamily\footnotesize,
+        inner sep=4pt,
+        text=black!60
+    },
+    %%
+    %% small boxes
+    see/.style={
+        rectangle,
+        draw=none,
+        fill=gray!0,
+        minimum height=0.65cm,
+        font=\sffamily\scriptsize,
+        inner sep=4pt,
+        text=black!65,
+        align=left
+    },
+    %%
+    %% Line style
+    line/.style={
+        line width=0.1pt,
+        gray!15
+    }
+]
+%%
+%% Branch 2: Main files
+%%
+\node[file] (main) {main.tex};
+\node[file, below=of main] (latexmk) {latexmkrc};
+%%
+%% Branch 2: Main folders
+%%
+\node[folder, below=0.8cm of latexmk] (content) {content/};
+%%
+\node[folder, below=0.6cm of content] (elements) {elements/};
+%%
+\node[folder, below=0.6cm of elements] (asset) {asset/};
+%%
+\node[folder, below=0.6cm of asset] (extra) {extra/};
+%%
+%% Compute vertical center
+%%
+\coordinate (rightcenter) at ($(main)!0.5!(extra)$);
+%%
+%% Root node
+\node[root, align=center] (root) at ($(rightcenter) + (-5cm,0)$) {PhD Thesis\\Template};
+%%
+%% Connections
+%%
+\draw[line] (root.east) -- (main.west);
+%%
+\draw[line] (root.east) -- (latexmk.west);
+%%
+\draw[line] (root.east) -- (content.west);
+%%
+\draw[line] (root.east) -- (elements.west);
+%%
+\draw[line] (root.east) -- (asset.west);
+%%
+\draw[line] (root.east) -- (extra.west);
+%%
+%% See Fig
+%%
+\node[see, right=0.6cm of content] (seecontent)
+  {see \hyperref[fig:appendices-D1]{Figure~\ref{fig:appendices-D1}},
+   \hyperref[fig:appendices-D1]{p.}~\pageref{fig:appendices-D1}};
+   %%
+\node[see, right=0.6cm of elements] (seeelements)
+  {see \hyperref[fig:appendices-E1]{Figure~\ref{fig:appendices-E1}},
+   \hyperref[fig:appendices-E1]{p.}~\pageref{fig:appendices-E1}};
+   %%
+\node[see, right=0.6cm of asset] (seeasset)
+  {see \hyperref[fig:appendices-F1]{Figure~\ref{fig:appendices-F1}},
+   \hyperref[fig:appendices-F1]{p.}~\pageref{fig:appendices-F1}};
+   %%
+\node[see, right=0.6cm of extra] (seeextra)
+  {see \hyperref[fig:appendices-G1]{Figure~\ref{fig:appendices-G1}},
+   \hyperref[fig:appendices-G1]{p.}~\pageref{fig:appendices-G1}};
+   %%
+\end{tikzpicture}
+    %%
+    \vspace{0.5cm}
+    %%
+    \caption{General Structure of the \latexword{LaTeX} Thesis Template}
+    \label{fig:introduction-01}
+    %%
+\end{figure}
+
+%% End elements/figures/fig01.tex
+    \end{document}

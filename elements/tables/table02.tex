@@ -1,0 +1,109 @@
+%% =====================================
+%% TABLE 2
+%% =====================================
+%% Description: Integrate a table
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin elements/tables/table02.tex
+    \begin{document}
+
+    % Table 02
+\customizedtable{chap2-01} % Label
+    {Standard \latexword{LaTeX} Commands} % Caption
+    {
+    %%
+    %% Number and size of cells
+    %%
+    \begin{tabular}{
+    p{0.5\textwidth} % Column 1
+    p{0.5\textwidth} % Column 2
+    }
+    %%
+    %% Headers
+    %%
+\theader{Codes Used in the Document} &
+\theader{Definition}\\
+    %%
+    \hline
+    %%
+\textbf{Document Structure} &\\
+    %%
+\texttt{\textbackslash part\{title\}} & \small{Create a part}\\
+    %%
+\texttt{\textbackslash chapter\{title\}} & \small{Create a chapter}\\
+    %%
+\texttt{\textbackslash section\{title\}} & \small{Create a section}\\
+    %%
+\texttt{\textbackslash subsection\{title\}} & \small{Create a subsection}\\
+    %%
+%\texttt{\textbackslash subsubsection\{title\}}} & \small{Create a subsubsection}\\
+    %%
+%\texttt{\textbackslash paragraph\{title\}}} & \small{Create a paragraph}\\
+    %%
+%\texttt{\textbackslash subparagraph\{title\}}} & \small{Create a subparagraph}\\
+    %%
+    \hdashline
+    %%
+\textbf{Text Formatting} &\\
+    %%
+\texttt{\textbackslash textbf\{text\}} & \small{Bold text}\\
+    %%
+\texttt{\textbackslash textsl\{text\}} & \small{Slanted text}\\
+    %%
+\texttt{\textbackslash texttt\{text\}} & \small{Typewriter text}\\
+    %%
+\texttt{\textbackslash enquote\{text\}} & \small{English quotation marks}\\
+    %%
+\texttt{\textbackslash textcolor\{color\}\{text\}} & \small{Colored text}\\
+    %%
+    \hdashline
+    %%
+\textbf{Lists} &\\
+    %%
+\texttt{\textbackslash begin\{itemize\}} \dots~\texttt{\textbackslash end\{itemize\}} & \small{Bulleted list}\\
+    %%
+\texttt{\textbackslash begin\{enumerate\}} \dots~\texttt{\textbackslash end\{enumerate\}} & \small{Numbered list}\\
+    %%
+\texttt{\textbackslash begin\{description\}} \dots~\texttt{\textbackslash end\{description\}} & \small{Description list}\\
+    %%
+    \hdashline
+    %%
+\textbf{Standard Elements} &\\
+    %%
+\texttt{\textbackslash begin\{figure\}} \dots~\texttt{\textbackslash end\{figure\}} & \small{Figure environment}\\
+    %%
+\texttt{\textbackslash begin\{table\}} \dots~\texttt{\textbackslash end\{table\}} & \small{Table environment}\\
+    %%
+\texttt{\textbackslash begin\{equation\}} \dots~\texttt{\textbackslash end\{equation\}} & \small{Numbered equation}\\
+    %%
+    \hdashline
+    %%
+\textbf{Bibliography Citations (biblatex)} & \small{}\\
+    %%
+\texttt{\textbackslash autocite\{key\}} & \small{Automatic citation (Author year)}\\
+    %%
+\texttt{\textbackslash textcite\{key\}} & \small{In-text citation (Author year)}\\
+    %%
+\texttt{\textbackslash autocites\{key1\}\{key2\}} & \small{Multiple citations}\\
+    %%
+    \hdashline
+    %%
+\textbf{Hyperlinks} &\\
+    %%
+\texttt{\textbackslash hyperref[label]\{text\}} & \small{Internal hyperlink}\\
+    %%
+\texttt{\textbackslash href\{url\}\{text\}} & \small{Hyperlink with custom text}\\
+    %%
+    \hline
+    %%
+    \end{tabular}
+    }
+    {Realization}
+    {Moinse} % Author
+    {2025} % Year
+    {\loremshort} % Reading note
+
+%% End elements/tables/table02.tex
+    \end{document}

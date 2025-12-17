@@ -1,0 +1,23 @@
+%% =====================================
+%% BIBLIOGRAPHY
+%% =====================================
+%% Description: Main bibliography at end of document
+%% Comment out if using per-chapter bibliographies
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/back-matter/95-bibliography.tex
+    \begin{document}
+
+    \cleardoublepage
+    %\phantomsection
+    \addcontentsline{toc}{part}{Bibliography}
+
+\printbibliography[
+  title=Bibliography,
+  heading=bibintoc
+]
+
+%% End content/back-matter/95-bibliography.tex
+    \end{document}

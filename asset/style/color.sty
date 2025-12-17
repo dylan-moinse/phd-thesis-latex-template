@@ -1,0 +1,102 @@
+%% =====================================
+%% COLOR SCHEME
+%% =====================================
+%% Description: Define color palette for thesis
+%% This file is kept separate for easy color scheme customization
+
+%% Usage in thesis.cls:
+%% \RequirePackage{asset/style/color}
+
+%% =====================================
+%% XCOLOR PACKAGE
+%% =====================================
+%% Description: Advanced color management package
+%% Provides:
+%% - \definecolor: Define custom colors
+%% - \colorlet: Create color aliases
+%% - Color mixing and manipulation
+%% - Support for multiple color models (RGB, CMYK, HTML)
+\RequirePackage{xcolor}
+
+%% =====================================
+%% BRAND COLORS
+%% =====================================
+%% Description: Official Université Gustave Eiffel brand colors
+
+%% PRIMARY COLOR - Blue
+%% Pantone 2746C
+%% CMYK: 100, 98, 0, 0
+%% RGB: 47, 42, 128
+%% HEX: #2f2a85
+%% Usage: Main color for headings, titles, links
+\definecolor{customizedcolor}{RGB}{47, 42, 128}
+% Alternative CMYK definition:
+% \definecolor{customizedcolor}{cmyk}{100,98,0,0}
+
+%% =====================================
+%% COLOR ALIASES - SIMPLIFIED NAMES
+%% =====================================
+%% Description: Create short aliases for easier use
+
+%% Main colors - most commonly used
+\colorlet{blue}{customizedcolor} % Primary blue
+
+%% =====================================
+%% COLORED CITATION COMMANDS
+%% =====================================
+%% Description: Automatic blue color for full citations
+
+%% Save original biblatex commands before redefining
+\let\originaltextcite\textcite
+\let\originalautocite\autocite
+\let\originalautocites\autocites
+
+%% \textcite
+%% Format: Author (Year) or Author (Year, page)
+%% The command preserves all original biblatex functionality
+\renewcommand{\textcite}[2][]{%
+  \textcolor{customizedcolor}{%
+    \ifx&#1&%
+      % No optional argument (no page number)
+      \originaltextcite{#2}%
+    \else%
+      % With optional argument (page number)
+      \originaltextcite[#1]{#2}%
+    \fi%
+  }%
+}
+
+%% \autocite
+%% Format: (Author Year) or (Author Year, page)
+%% The command preserves all original biblatex functionality
+\renewcommand{\autocite}[2][]{%
+  \textcolor{customizedcolor}{%
+    \ifx&#1&%
+      % No optional argument
+      \originalautocite{#2}%
+    \else%
+      % With optional argument
+      \originalautocite[#1]{#2}%
+    \fi%
+  }%
+}
+
+%% \autocites
+%% Format: (Author1 Year1; Author2 Year2; ...)
+%% Using manually \textcolor{customizedcolor}{\autocites[page1]{key1}[page2]{key2}}
+
+%% =====================================
+%% USAGE EXAMPLES
+%% =====================================
+%% In your document:
+
+%% 1. Use in text:
+%% \textcolor{customizedcolor}{This text is blue}
+%% \textcolor{blue}{This also works}
+
+%% 5. Mixing colors:
+%% \textcolor{customizedcolor!50}{50% blue (lighter)}
+%% \textcolor{customizedcolor!50!white}{Blue mixed with white}
+
+%% End asset/style/color.sty
+\endinput

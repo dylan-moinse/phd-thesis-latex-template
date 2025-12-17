@@ -1,0 +1,65 @@
+%% =====================================
+%% GLOSSARY
+%% =====================================
+%% Description: Automatic glossary
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/back-matter/98-glossary.tex
+    \begin{document}
+
+%% =====================================
+%% DEFINITIONS
+%% =====================================
+
+%% Notion 1
+\newglossaryentry{notion1}{
+    name={First notion:},
+    text={first notion},
+    description={
+    \footnotesize{
+\enquote{\loremmedium}~\autocite[5]{example2022}\index{Casual, Name|pagebf}
+        }
+    }}
+
+%% Notion 2
+\newglossaryentry{notion2}{
+    name={Second notion:},
+    text={second notion},
+    description={
+    \footnotesize{
+\loremlong
+        }
+    }}
+
+%% =====================================
+%% PRINT GLOSSARY
+%% =====================================
+
+    \cleardoublepage
+    \markright{Glossary}{}
+    %\phantomsection
+    \addcontentsline{toc}{part}{Glossary}
+    \label{sec:glossary}
+
+%% Print glossary
+\printglossary[
+  title=Glossary,
+  style=long
+]
+
+%% Sub-bibliography for glossary
+    \newpage
+    \begingroup
+    \renewcommand{\bibfont}{\scriptsize}
+\printbibliography[
+  segment=\therefsegment,
+  heading=subbibintoc,
+  title={Glossary References},
+  label=glossary:bibliography
+]
+    \endgroup
+
+%% End content/back-matter/98-glossary.tex
+    \end{document}

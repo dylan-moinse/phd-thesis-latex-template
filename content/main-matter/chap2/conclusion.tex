@@ -1,0 +1,25 @@
+%% =====================================
+%% CHAPTER 2
+%% =====================================
+%% Description: Write your chapter 2 (conclusion)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% begin content/main-matter/chap2/conclusion.tex
+    \begin{document}
+
+%% =====================================
+%% BIBLIOGRAPHY OF CHAPTER 2
+%% =====================================
+    % Subbibliography
+    \newpage
+    %\sectionheader{}
+
+    \begingroup
+    \renewcommand{\bibfont}{\scriptsize}
+\printbibliography[segment=\therefsegment, heading=subbibintoc, title={Subbibliography of Chapter~2}, label=chap2:bibliography]
+    \endgroup
+
+%% End content/main-matter/chap2/conclusion.tex
+    \end{document}

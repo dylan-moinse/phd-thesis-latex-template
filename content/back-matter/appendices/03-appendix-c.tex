@@ -1,0 +1,49 @@
+%% =====================================
+%% APPENDIX C
+%% =====================================
+%% Description: Integrate Appendix C
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/03-appendix-c.tex
+    \begin{document}
+
+    \newpage
+
+%% Appendix C
+\section*{Title of Appendix~C}
+    \label{appendix:c}
+    %\addcontentsline{toc}{chapter}{}
+    \addcontentsline{toc}{section}{Appendix~C: Title}
+
+%% Force numbering
+\renewcommand{\thefigure}{C.\arabic{figure}}
+\renewcommand{\themap}{C.\arabic{map}}
+\renewcommand{\thetable}{C.\arabic{table}}
+\renewcommand{\theequation}{C.\arabic{equation}}
+
+%% Transcript Appendix C
+
+    \begin{description}
+    %%
+\item[Participant \(ID^{A}_{1}\)]: \enquote{\textsl{\loremlong}}
+%%
+\item[Participant \(ID^{A}_{2}\)]: \enquote{\textsl{\loremshort}}
+%%
+\item[Participant \(ID^{A}_{1}\)]: \enquote{\textsl{\loremmedium}}
+%%
+\item[Participant \(ID^{A}_{2}\)]: \enquote{\textsl{\loremshort}}
+%%
+\item[Participant \(ID^{B}_{1}\)]: \enquote{\textsl{\loremmedium}}
+%%
+\item[Participant \(ID^{B}_{2}\)]: \enquote{\textsl{\loremshort}}
+%%
+\item[Participant \(ID^{B}_{1}\)]: \enquote{\textsl{\loremshort}}
+%%
+\item[Participant \(ID^{B}_{2}\)]: \enquote{\textsl{\loremmedium}}
+    %%
+    \end{description}
+
+%% End content/back-matter/appendices/03-appendix-c.tex
+    \end{document}

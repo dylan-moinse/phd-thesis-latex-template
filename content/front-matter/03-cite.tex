@@ -1,0 +1,30 @@
+%% =====================================
+%% CITE THIS DOCUMENT
+%% =====================================
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/front-matter/03-cite.tex
+    \begin{document}
+
+% CITE
+    \cleardoublepage
+    \needspace{1\baselineskip}
+\chapter*{Cite this document}
+    \label{part:cite}
+    \markboth{Cite this document}{}
+    \markright{Cite this document}{}
+    \addcontentsline{toc}{part}{Cite this document}
+
+    % Cite your thesis
+\textcolor{customizedcolor}{Author (Year)}, \textsl{Thesis Title} (Fields of Study). University, Laboratory. Supervised by \textcolor{customizedcolor}{Supervisor}, \pageref{LastPage}~p. %%V1
+
+    %%
+    \bigskip
+    %%
+
+    % (Cite this document somewhere)
+\textcolor{customizedcolor}{Moinse, Dylan (2025)}, \textsl{PhD Thesis \latexword{LaTeX} Template}, \pageref{LastPage}~p. \url{https://github.com/dylan-moinse/phd-thesis-latex-template} %%V1
+
+%% End content/front-matter/03-cite.tex
+    \end{document}

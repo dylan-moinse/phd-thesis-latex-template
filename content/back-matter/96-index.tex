@@ -1,0 +1,25 @@
+%% =====================================
+%% AUTHOR INDEX
+%% =====================================
+%% Description: Alphabetical automatic index of cited authors
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/back-matter/96-index.tex
+    \begin{document}
+
+    \cleardoublepage
+    \markright{Author Index}{}
+    %\phantomsection
+
+%% Switch to two-column layout for index
+    \twocolumn
+\printindex[authors]
+    \addcontentsline{toc}{part}{Author Index}
+
+%% Return to one-column layout
+    \onecolumn
+
+%% End content/back-matter/96-index.tex
+    \end{document}

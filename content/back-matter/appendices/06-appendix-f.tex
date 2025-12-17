@@ -1,0 +1,30 @@
+%% =====================================
+%% APPENDIX F
+%% =====================================
+%% Description: Integrate Appendix F
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/06-appendix-f.tex
+    \begin{document}
+
+    \newpage
+
+%% Appendix F
+\section*{Appendix~F: Structure of the \texttt{asset/} \latexword{LaTeX} Folder}
+    \label{appendix:f}
+    %\addcontentsline{toc}{chapter}{}
+    \addcontentsline{toc}{section}{Appendix~F: Structure of the Asset Folder}
+
+%% Force numbering
+\renewcommand{\thefigure}{F.\arabic{figure}}
+\renewcommand{\themap}{F.\arabic{map}}
+\renewcommand{\thetable}{F.\arabic{table}}
+\renewcommand{\theequation}{F.\arabic{equation}}
+
+%% Diagram Appendix F
+\subfile{../../../elements/appendices/figures/figF1}
+
+%% End content/back-matter/appendices/06-appendix-f.tex
+    \end{document}

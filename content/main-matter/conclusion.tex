@@ -1,0 +1,85 @@
+%% =====================================
+%% CONCLUSION
+%% =====================================
+%% Description: Write your general conclusion
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/main-matter/conclusion.tex
+    \begin{document}
+
+    \cleardoublepage
+
+%% Space for ToC
+\addtocontents{lof}{\protect\addvspace{0.5\baselineskip}} % for figures
+\addtocontents{lom}{\protect\addvspace{0.5\baselineskip}} % for maps
+\addtocontents{lot}{\protect\addvspace{0.5\baselineskip}} % for tables
+\addtocontents{loe}{\protect\addvspace{0.5\baselineskip}} % for equations
+
+    % Background
+\enablepartbg
+\setpartsource{Photography: You (Year)}
+
+\renewcommand{\thefigure}{C.\arabic{figure}}
+\renewcommand{\themap}{C.\arabic{map}}
+\renewcommand{\thetable}{C.\arabic{table}}
+\renewcommand{\theequation}{C.\arabic{equation}}
+
+\setcounter{figure}{0}
+\setcounter{map}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+
+    \needspace{1\baselineskip}
+\part*{Conclusion}
+    \label{part:conclusion}
+    %\addcontentsline{toc}{part}{}
+    \markboth{Conclusion}{}
+    \markright{Conclusion}{}
+    \begin{refsegment}
+
+    % Lipsum 1
+\mylettrine{C}{onclusion} \loremlong %%V1
+
+    % Lipsum 2
+\loremmedium %%V1
+
+    % Lipsum 3
+\loremlong %%V1
+
+    % Fig04: General Structure of the LaTeX Thesis Template
+\subfile{../../elements/figures/fig04}
+
+    % Lipsum 4
+\loremmedium %%V1
+
+    % Lipsum 5
+\loremlong %%V1
+
+    % Lipsum 6
+\loremmedium %%V1
+
+    % Lipsum 7
+\loremlong %%V1
+
+    % Lipsum 8
+\loremmedium %%V1
+
+    % Lipsum 9
+\loremlong %%V1
+
+    % Lipsum 10
+\loremmedium %%V1
+
+    % Subbibliography
+    %\newpage
+    %\sectionheader{}
+    %\begingroup
+    %\renewcommand{\bibfont}{\scriptsize}
+%\printbibliography[segment=\therefsegment, heading=subbibintoc, title={Subbibliography of Conclusion}, label=conclusion]
+    %\endgroup
+    \end{refsegment}
+
+%% End content/main-matter/conclusion.tex
+    \end{document}

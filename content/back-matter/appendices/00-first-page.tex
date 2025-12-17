@@ -1,0 +1,56 @@
+%% =====================================
+%% APPENDIX (FIRST PAGE)
+%% =====================================
+%% Description: Title page and ToC
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% Begin content/back-matter/appendices/00-first-page.tex
+    \begin{document}
+
+    \cleardoublepage
+
+%% Space for ToC
+\addtocontents{lof}{\protect\addvspace{0.5\baselineskip}} % for figures
+\addtocontents{lom}{\protect\addvspace{0.5\baselineskip}} % for maps
+\addtocontents{lot}{\protect\addvspace{0.5\baselineskip}} % for tables
+\addtocontents{loe}{\protect\addvspace{0.5\baselineskip}} % for equations
+
+    % Background Appendix
+\enablepartbg
+\setpartsource{Photography: You (Year)}
+
+%% Start appendices
+\part*{Appendices}
+    %\addcontentsline{toc}{part}{Appendices}
+    \markboth{Appendices}{}
+    \markright{Appendices}{}
+
+%% Reset chapter counter
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\Alph{chapter}}
+\renewcommand{\chaptername}{Appendix}
+\renewcommand{\appendixname}{Appendix}
+
+%% Configure all counters to use chapter letter
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\themap}{\thechapter.\arabic{map}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+%% Reset all element counters
+\setcounter{figure}{0}
+\setcounter{map}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+\setcounter{section}{0}
+
+%% Mini table of contents for appendices
+    \setcounter{tocdepth}{2}
+    \renewcommand{\localcontentsname}{List of Appendices}
+\localtableofcontents
+
+%% End content/back-matter/appendices/00-first-page.tex.tex
+    \end{document}

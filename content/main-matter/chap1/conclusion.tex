@@ -1,0 +1,25 @@
+%% =====================================
+%% CHAPTER 1
+%% =====================================
+%% Description: Write your chapter 1 (content)
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../../main.tex]{subfiles}
+
+%% begin content/main-matter/chap1/conclusion.tex
+    \begin{document}
+
+%% =====================================
+%% BIBLIOGRAPHY OF CHAPTER 1
+%% =====================================
+    % Subbibliography
+    \newpage
+    %\sectionheader{}
+
+    \begingroup
+    \renewcommand{\bibfont}{\scriptsize}
+\printbibliography[segment=\therefsegment, heading=subbibintoc, title={Subbibliography of Chapter~1}, label=chap1:bibliography]
+    \endgroup
+
+%% End content/main-matter/chap1/conclusion.tex
+    \end{document}

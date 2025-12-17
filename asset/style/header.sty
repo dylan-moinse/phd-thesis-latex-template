@@ -1,0 +1,278 @@
+%% =====================================
+%% HEADER & FOOTER CONFIGURATION
+%% =====================================
+%% Description: Headers and footers configuration
+
+%% Usage in thesis.cls:
+%% \RequirePackage{asset/style/header-footer}
+
+%% =====================================
+%% REQUIRED PACKAGES
+%% =====================================
+
+%% truncate: Truncate long text to fit within specified width
+%% Option [fit]: Automatically fit text to available space
+%% Provides: \truncate{width}{text}
+%% Used for: Long chapter/section titles in headers
+\RequirePackage[fit]{truncate}
+
+%% fancyhdr: Custom headers and footers package
+%% Most widely used package for customizing page headers/footers
+%% Provides: \fancyhead, \fancyfoot, \pagestyle, \fancypagestyle
+%% Documentation: texdoc fancyhdr
+\RequirePackage{fancyhdr}
+
+%% Fix fancyhdr head height warning
+\setlength{\headheight}{14pt}
+
+%% ragged2e: Improved ragged text alignment
+%% Better than standard LaTeX \raggedright (which disables hyphenation)
+%% Provides: \justifying, \RaggedRight, \RaggedLeft
+%% Used for: Better text alignment in headers
+\RequirePackage{ragged2e}
+
+%% xpatch: Extended command patching capabilities
+%% More powerful than etoolbox for patching commands
+%% Provides: \xpretocmd, \xapptocmd, \xpatchcmd
+%% Used for: Adding colors to header/footer rules
+\RequirePackage{xpatch}
+
+%% lastpage: Reference to the last page number
+%% Provides: \pageref{LastPage}
+%% Used for: "X/Y" page numbering format (e.g., "42/250")
+\RequirePackage{lastpage}
+
+%% pdfpages: Include external PDF pages in document
+%% Provides: \includepdf[options]{file.pdf}
+%% Used for: Including pre-made cover pages, appendices, etc.
+\RequirePackage{pdfpages}
+
+%% =====================================
+%% CUSTOM HEADER TEXT COMMANDS
+%% =====================================
+%% Description: Commands to define custom header text
+%% These override the default chapter/section names in headers
+
+%% Define custom chapter header text
+%% Usage: \chapterheader{My Custom Title}
+%% Result: "Chapter X : My Custom Title" appears in header
+%% \gdef: Global definition (survives group boundaries)
+\newcommand{\chapterheader}[1]{\gdef\@chapterheader{#1}}
+
+%% Define custom section header text
+%% Usage: \sectionheader{My Custom Title}
+%% Result: "Section X.Y : My Custom Title" appears in header
+\newcommand{\sectionheader}[1]{\gdef\@sectionheader{#1}}
+
+%% Define custom bibliography header text
+%% Usage: \bibheader{References}
+%% Result: Custom text appears in bibliography header
+\newcommand{\bibheader}[1]{\gdef\@bibheader{#1}}
+
+%% =====================================
+%% INITIALIZE CUSTOM HEADERS
+%% =====================================
+%% Initialize commands with empty values to avoid "undefined" errors
+
+\chapterheader{}
+\sectionheader{}
+\bibheader{}
+
+%% =====================================
+%% BASIC FANCYHDR CONFIGURATION
+%% =====================================
+
+%% Set fancy as the default page style
+%% This activates custom headers/footers throughout the document
+\pagestyle{fancy}
+
+%% Clear all default headers and footers
+%% \fancyhf{}: Clears both head and foot on all pages
+%% Provides clean slate for custom configuration
+\fancyhf{}
+
+%% =====================================
+%% DEFAULT HEADER CONTENT (BASIC STYLE)
+%% =====================================
+%% This is the simple header style used when customizedfancy is not activated
+
+%% Header on Left of Even pages, Right of Odd pages
+%% \leftmark: Contains chapter information (defined by \chaptermark)
+%% Format: "Chapter X : Title"
+%% \small: Reduces font size for header text
+\fancyhead[LE,RO]{\small \leftmark}
+
+%% Header on Right of Even pages, Left of Odd pages
+%% \rightmark: Contains section information (defined by \sectionmark)
+%% Format: "Section X.Y : Title"
+\fancyhead[RE,LO]{\small \rightmark}
+
+%% =====================================
+%% CHAPTER AND SECTION MARK DEFINITIONS
+%% =====================================
+%% Define what text appears in \leftmark and \rightmark
+
+%% Chapter mark definition (populates \leftmark)
+%% \markboth: Sets both left and right marks
+%% Format: "Chapter X : [custom text from \chapterheader]"
+\renewcommand{\chaptermark}[1]{\markboth{\small Chapter~\thechapter{} : \@chapterheader}{}}
+
+%% Section mark definition (populates \rightmark)
+%% \markright: Sets right mark only
+%% Format: "Section X.Y : [custom text from \sectionheader]"
+%% Example: "Section 3.2 : Collecte de données"
+\renewcommand{\sectionmark}[1]{\markright{\small Section~\thesection{} : \@sectionheader}}
+
+%% Sub-bibliography mark (for chapter bibliographies)
+%% Sets both left and right marks to the same custom text
+%% Usage: \subbibmark{References}
+\newcommand{\subbibmark}[1]{\markboth{\small #1}{\small #1}}
+
+%% =====================================
+%% ALTERNATIVE MARK FORMATS (COMMENTED)
+%% =====================================
+%% These are alternative formats kept for reference
+%% Uncomment and modify if needed
+
+%% Part-based mark:
+%\renewcommand{\chaptermark}[1]{\markboth{{\partname~\thepart{} :} #1}{}}
+
+%% Standard chapter name format:
+%\renewcommand{\chaptermark}[1]{\markboth{{\chaptername~\thechapter{} :} #1}{}}
+
+%% French "Chapitre" with direct text:
+%\renewcommand{\chaptermark}[1]{\markboth{{Chapitre~\thechapter{} :} #1}{}}
+
+%% Direct section format:
+%\renewcommand{\sectionmark}[1]{\markright{{Section~\thesection{} :} #1}{}}
+
+%% =====================================
+%% FANCY PAGE STYLE
+%% =====================================
+%% Advanced page style with colors and formatting
+%% Activate with: \pagestyle{customizedfancy}
+
+\fancypagestyle{customizedfancy}{%%
+
+%% =====================================
+%% PAGE NUMBER FORMAT
+%% =====================================
+%% Define custom page number format: "X/Y"
+%% Example: "42/250" (page 42 of 250)
+%% Color: Blue (uses 'blue' defined in color.sty)
+%% Style: Bold
+\newcommand{\customizedpagenum}{%
+\color{blue}\textbf{\thepage}/\pageref{LastPage}%
+}
+
+%% =====================================
+%% HEADER DEFINITIONS FOR customizedfancy
+%% =====================================
+
+%% TID = Tête Impaire Droite (Right Header on Odd pages)
+%% Shows section title (\rightmark) on the right of odd pages
+%% Color: blue
+%% Style: Bold, truncated to fit header width
+\newcommand{\TID}{\color{blue} \textbf{\truncate{1\headwidth}{\rightmark}}}
+
+%% TPG = Tête Paire Gauche (Left Header on Even pages)
+%% Shows chapter title (\leftmark) on the left of even pages
+%% Color: blue
+%% Style: Bold, truncated to fit header width
+\newcommand{\TPG}{\color{blue} \textbf{\truncate{1\headwidth}{\leftmark}}}
+
+%% =====================================
+%% FOOTER DEFINITIONS FOR customizedfancy
+%% =====================================
+
+%% PPG = Pied Paire Gauche (Footer Left on Even pages)
+%% Shows page number in "X/Y" format
+\newcommand{\PPG}{\customizedpagenum{}}
+
+%% PID = Pied Impaire Droite (Footer Right on Odd pages)
+%% Shows page number in "X/Y" format
+\newcommand{\PID}{\customizedpagenum{}}
+
+%% PPC = Pied Centre (Footer Center - Thesis title)
+%% Shows thesis title in footer
+%% Default: "Le Transit-Oriented Development revisité par la mobilité individuelle légère émergente"
+%% Customize in main.tex with: \renewcommand{\PPC}{Your custom title}
+%% Style: Small italic (\footnotesize, \textsl)
+\newcommand{\PPC}{\textsl{\footnotesize{PhD Thesis Title}}}
+
+%% =====================================
+%% HEADER & FOOTER RULE THICKNESS
+%% =====================================
+
+%% Header rule (horizontal line below header)
+%% 0.25pt: Thin elegant line (professional appearance)
+%% Can be customized: 0pt (no line), 0.5pt (thicker), 1pt (bold)
+\renewcommand{\headrulewidth}{0.25pt}
+
+%% Footer rule (horizontal line above footer)
+%% 0.25pt: Thin elegant line matching header
+\renewcommand{\footrulewidth}{0.25pt}
+
+%% =====================================
+%% RESET HEADERS AND FOOTERS
+%% =====================================
+
+%% Clear any existing header configuration
+\fancyhead{}
+
+%% Clear any existing footer configuration
+\fancyfoot{}
+
+%% =====================================
+%% CONFIGURE FOOTERS (customizedfancy style)
+%% =====================================
+
+%% Page numbers on outer margins
+%% LE: Left on Even pages (page number "X/Y")
+%% RO: Right on Odd pages (page number "X/Y")
+\fancyfoot[LE,RO]{\PID}
+
+%% Thesis title on inner margins
+%% LO: Left on Odd pages (thesis title)
+%% RE: Right on Even pages (thesis title)
+\fancyfoot[LO,RE]{\PPC}
+
+%% =====================================
+%% CONFIGURE HEADERS (customizedfancy style)
+%% =====================================
+
+%% Section title on right of odd pages
+%% RO: Right Odd - shows \rightmark (section)
+\fancyhead[RO]{\TID{}}
+
+%% Chapter title on left of even pages
+%% LE: Left Even - shows \leftmark (chapter)
+\fancyhead[LE]{\TPG{}}
+
+}%% End of customizedfancy page style definition
+
+%% =====================================
+%% HEADER/FOOTER RULE COLORS
+%% =====================================
+%% Apply blue color to horizontal rules
+
+%% Color the header rule (line below header)
+%% \xpretocmd: Adds code before \headrule command
+%% Color: blue (defined in color.sty)
+%% RGB: 47, 42, 128 (#2F2A85)
+\xpretocmd\headrule{\color{blue}}{}{\PatchFailed}
+
+%% Color the footer rule (line above footer)
+%% \xpretocmd: Adds code before \footrule command
+%% Color: blue (matching header)
+\xpretocmd\footrule{\color{blue}}{}{\PatchFailed}
+
+%% No header and footer on title pages
+\fancypagestyle{plain}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+%% End asset/style/header.sty
+\endinput

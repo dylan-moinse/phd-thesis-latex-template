@@ -1,0 +1,162 @@
+%% =====================================
+%% FONT CONFIGURATION
+%% =====================================
+%% Description: Configure fonts for thesis document
+%% This file is kept separate for easy font customization
+
+%% Usage in thesis.cls:
+%% \RequirePackage{asset/style/font}
+
+%% =====================================
+%% ENGINE DETECTION
+%% =====================================
+%% Description: Check which LaTeX engine is being used
+%% Different engines have different font capabilities
+
+\ifluatex
+  %% =====================================
+  %% LUALATEX CONFIGURATION (Recommended)
+  %% =====================================
+  %% Description: Modern engine with full Unicode support
+  %% Advantages:
+  %% - Native support for TrueType/OpenType fonts
+  %% - Full Unicode character support
+  %% - Advanced font features (ligatures, old-style numerals, etc.)
+  
+  %% fontspec: Package for font selection in LuaLaTeX/XeLaTeX
+  %% Provides:
+  %% - \setmainfont{}: Set main document font
+  %% - \setsansfont{}: Set sans-serif font
+  %% - \setmonofont{}: Set monospace font
+  %% - Font features: Ligatures, numbers style, variants
+  \RequirePackage{fontspec}
+  
+  %% =====================================
+  %% FONT SELECTION OPTIONS
+  %% =====================================
+  %% Description: Multiple font options for different styles
+  %% Uncomment your preferred option or define custom font
+  
+  %% OPTION 1: Verdana
+  %% Description: Clear, professional sans-serif font
+  %% Pros: Excellent screen readability, modern look
+  %% Cons: Less formal than serif fonts
+  %% Use for: Technical theses, modern presentations
+  %% 
+  %% Font files location: .font/ (relative to main.tex)
+  %% Required files:
+  %% - verdana.ttf (Regular)
+  %% - verdana-bold.ttf (Bold)
+  %% - verdana-italic.ttf (Italic)
+  %% - verdana-bold-italic.ttf (Bold Italic)
+  
+  \setmainfont{verdana}[
+    Path=asset/style/fonts/, % Font directory (adjust if needed)
+    BoldFont={verdana-bold.ttf}, % Bold variant
+    ItalicFont={verdana-italic.ttf}, % Italic variant
+    BoldItalicFont={verdana-bold-italic.ttf}, % Bold+Italic variant
+    Extension = .ttf, % File extension
+    Ligatures=TeX,
+    FakeSmallCaps = true
+  ]
+
+%% =====================================
+%% SMALL CAPS FIX
+%% =====================================
+%% Verdana has no small caps
+%%
+\makeatletter
+\AtBeginDocument{
+  % Verdana does not provide a TU small-caps shape
+  \DeclareRobustCommand{\textsc}[1]{\MakeUppercase{#1}}
+  \DeclareRobustCommand{\scshape}{\upshape}
+}
+\makeatother
+
+\else
+  %% =====================================
+  %% PDFLATEX CONFIGURATION (Legacy)
+  %% =====================================
+  %% Description: Traditional LaTeX engine
+  %% Limitations:
+  %% - Limited font support (mainly Type 1 fonts)
+  %% - No direct TrueType/OpenType support
+  %% - Limited Unicode support
+  %% 
+  %% Note: Consider switching to LuaLaTeX for better font support
+  
+  %% Latin Modern: Default high-quality font for PDFLaTeX
+  %% Description: Modern Computer Modern (LaTeX default)
+  %% Pros: Excellent quality, traditional LaTeX look
+  %% Cons: Very recognizable as "LaTeX default"
+  \RequirePackage{lmodern}
+
+\fi
+
+%% =====================================
+%% FONT SIZE ADJUSTMENTS
+%% =====================================
+%% Description: Fine-tune font sizes if needed
+%% 
+%% Uncomment to adjust base font size:
+% \renewcommand{\normalsize}{\fontsize{11}{13.2}\selectfont} % 11pt with 1.2 line spacing
+% \renewcommand{\normalsize}{\fontsize{12}{14.4}\selectfont} % 12pt with 1.2 line spacing
+
+%% =====================================
+%% ADVANCED FONT FEATURES (LuaLaTeX only)
+%% =====================================
+%% Description: Configure advanced OpenType features
+%% Only works with LuaLaTeX and compatible fonts
+
+\ifluatex
+  %% Default font features for all fonts
+  %% Uncomment and customize as needed:
+  
+  % \defaultfontfeatures{
+  %   Ligatures = TeX, % Enable TeX ligatures (-- en-dash, etc.)
+  %   Numbers = OldStyle, % Use old-style (lowercase) numerals
+  %   % Numbers = Lining, % Use lining (uppercase) numerals (default)
+  %   % Scale = MatchLowercase, % Scale font to match lowercase height
+  % }
+  
+  %% Specific features for main font:
+  %% Example with advanced OpenType features
+  
+  % \setmainfont{EBGaramond}[
+  %   Extension = .otf,
+  %   Ligatures = {Common, Discretionary}, % Enable ligatures
+  %   Numbers = OldStyle, % Old-style numerals
+  %   Style = Swash, % Swash characters (if available)
+  %   RawFeature = {+dlig, +hlig}, % Discretionary and historical ligatures
+  % ]
+  
+\fi
+
+%% =====================================
+%% SANS-SERIF AND MONOSPACE FONTS
+%% =====================================
+%% Description: Configure secondary font families
+%% These are used for specific elements (code, captions, etc.)
+
+\ifluatex
+  %% Sans-serif font (for captions, headers, etc.)
+  %% Default: matches main font or use system sans
+  % \setsansfont{FreeSans}
+  % \setsansfont{Ubuntu}
+  % \setsansfont{Noto Sans}
+  
+  %% Monospace font (for code, URLs, etc.)
+  %% Default: matches system monospace
+  % \setmonofont{FreeMono}
+  % \setmonofont{Ubuntu Mono}
+  % \setmonofont{Noto Mono}
+  % \setmonofont{Courier New}
+  
+\else
+  %% PDFLaTeX alternatives
+  % \renewcommand{\sfdefault}{phv}  % Helvetica
+  % \renewcommand{\ttdefault}{pcr}  % Courier
+\fi
+
+%% End asset/style/font.sty
+\endinput

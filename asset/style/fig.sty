@@ -1,0 +1,253 @@
+%% =====================================
+%% CUSTOMIZED FIGURE, MAP, AND TABLE COMMAND
+%% =====================================
+%% Description: Single command for thesis figures with custom formatting
+
+%% Usage in thesis.cls:
+%% \RequirePackage{asset/style/fig}
+
+%% =====================================
+%% \customizedfigure COMMAND
+%% =====================================
+%% Description: Create a figure
+%% - Label with "fig:" prefix
+
+%% Usage:
+%% \customizedfigure{label}
+%% {caption}
+%% {image-path}
+%% {width}
+%% {prefix}
+%% {author}
+%% {year}
+
+%% Parameters:
+%% #1 = label (without "fig:" prefix, will be added automatically)
+%% #2 = caption text
+%% #3 = image file path
+%% #4 = width (e.g., 1\textwidth, 0.8\textwidth, 12cm, 0.9\columnwidth)
+%% #5 = source prefix
+%% #6 = author/source name
+%% #7 = year
+
+\newcommand{\customizedfigure}[7]{%
+    \begin{figure}[!ht]\vspace*{4pt}
+        \caption{#2}
+        \label{fig:#1}
+        \centerline{\includegraphics[width=#4]{#3}}
+        \vspace{5pt}
+        \begin{flushright}\scriptsize{%
+            \ifx&#5&%
+                % No prefix provided
+                \textcolor{customizedcolor}{#6 (#7)}%
+            \else%
+                % Prefix provided
+                #5: \textcolor{customizedcolor}{#6 (#7)}%
+            \fi%
+        }\end{flushright}
+    \end{figure}%
+}
+
+%% =====================================
+%% \customizedfigureinline COMMAND
+%% =====================================
+%% Description: Create a figure WITHOUT the figure environment
+%% For use inside subfigure when placing multiple figures side by side
+
+%% Usage:
+%% \customizedfigureinline{subcaption}
+%% {image-path}
+%% {width}
+%% {label}
+
+%% Parameters:
+%% #1 = subcaption text (can be empty for just (a), (b))
+%% #2 = image path
+%% #3 = width (1\textwidth when inside subfigure)
+%% #4 = label (without "fig:" prefix)
+%% The source is added once after all subfigures
+
+\newcommand{\customizedfigureinline}[4]{%
+    \centering%
+    \includegraphics[width=#3]{#2}%
+    \caption{#1}%
+    \label{fig:#4}%
+}
+
+%% =====================================
+%% \customizedmap COMMAND
+%% =====================================
+%% Description: Create a map
+%% - Label with "map:" prefix
+
+%% Usage:
+%% \customizedmap{label}
+%% {caption}
+%% {image-path}
+%% {width}
+%% {prefix}
+%% {author}
+%% {year}
+
+%% Parameters:
+%% #1 = label (without "map:" prefix, will be added automatically)
+%% #2 = caption text
+%% #3 = image file path
+%% #4 = width (e.g., 1\textwidth, 0.8\textwidth, 12cm, 0.9\columnwidth)
+%% #5 = source prefix
+%% #6 = author/source name
+%% #7 = year
+
+\newcommand{\customizedmap}[7]{%
+    \begin{map}[!ht]\vspace*{4pt}
+        \caption{#2}
+        \label{map:#1}
+        \centerline{\includegraphics[width=#4]{#3}}
+        \vspace{5pt}
+        \begin{flushright}\scriptsize{%
+            \ifx&#5&%
+                % No prefix provided
+                \textcolor{customizedcolor}{#6 (#7)}%
+            \else%
+                % Prefix provided
+                #5: \textcolor{customizedcolor}{#6 (#7)}%
+            \fi%
+        }\end{flushright}
+    \end{map}%
+}
+
+%% =====================================
+%% \customizedtable COMMAND
+%% =====================================
+%% Description: Create a table
+%% Label with "table:" prefix
+%% Automatic column header formatting (blue, bold, and small)
+%% All cells in small font
+
+%% Usage:
+%% \customizedtable{label}
+%%{caption}
+%% {tabular-content}
+%% {prefix}
+%% {author}
+%% {year}
+%% {reading-note} % Optional reading note
+
+%% Parameters:
+%% #1 = label (without "table:" prefix)
+%% #2 = caption text
+%% #3 = tabular content
+%% #4 = source prefix
+%% #5 = author/source name
+%% #6 = year
+%% #7 = reading note (optional)
+
+\newcommand{\customizedtable}[8]{%
+    \begin{table}[!ht]\vspace*{4pt}
+        \caption{#2}
+        \label{table:#1}
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \resizebox{\columnwidth}{!}{%
+            #3% The tabular content
+        }%
+        \vspace{5pt}
+        % Reading note (if provided)
+        \ifx&#7&%
+            % No reading note
+        \else%
+            \begin{flushleft}\scriptsize{%
+                \textcolor{customizedcolor}{Reading note:} #7%
+            }\end{flushleft}%
+        \fi%
+        % Source
+        \begin{flushright}\scriptsize{%
+            \ifx&#4&%
+                % No prefix provided
+                \textcolor{customizedcolor}{#5 (#6)}%
+            \else%
+                % Prefix provided
+                #4: \textcolor{customizedcolor}{#5 (#6)}%
+            \fi%
+            % Additional source line (if provided)
+            \ifx&#8&%
+                % No additional source
+            \else%
+                \\%
+                #8%
+            \fi%
+        }\end{flushright}
+    \end{table}%
+}
+
+%% =====================================
+%% HELPER COMMAND: \theader
+%% =====================================
+%% Description: Format table headers automatically
+%% - Blue color (customizedcolor)
+%% - Bold
+%% - Small font
+
+%% Usage in tabular:
+%% \theader{Column 1} & \theader{Column 2} & \theader{Column 3} \\
+
+\newcommand{\theader}[1]{%
+    \small{\textbf{\textcolor{customizedcolor}{#1}}}%
+}
+
+%% =====================================
+%% \customizedequation COMMAND
+%% =====================================
+%% Description: Create an equation with caption and source
+%% - Numbered by chapter
+%% - Source at bottom right in blue
+
+%% Usage:
+%% \customizedequation{label}
+%% {caption}
+%% {equation-content}
+%% {prefix}
+%% {author}
+%% {year}
+%% {definitions}
+
+%% Parameters:
+%% #1 = label (without "eq:" prefix, will be added automatically)
+%% #2 = caption text
+%% #3 = equation content (the math)
+%% #4 = source prefix
+%% #5 = author/source name
+%% #6 = year
+%% #7 = variable definitions (optional, use {} if none)
+
+\newcommand{\customizedequation}[7]{%
+    \begin{equationfloat}[!ht]\vspace*{4pt}
+        \caption{#2}
+        \label{eq:#1}
+        \begin{equation*}
+            #3
+        \end{equation*}
+        % Variable definitions (if provided)
+        \ifx&#7&%
+            % No definitions
+        \else%
+            \begin{flushleft}
+                \footnotesize{#7}
+            \end{flushleft}
+        \fi%
+        \vspace{5pt}
+        % Source
+        \begin{flushright}\scriptsize{%
+            \ifx&#4&%
+                % No prefix provided
+                \textcolor{customizedcolor}{#5 (#6)}%
+            \else%
+                % Prefix provided
+                #4: \textcolor{customizedcolor}{#5 (#6)}%
+            \fi%
+        }\end{flushright}
+    \end{equationfloat}%
+}
+
+%% End asset/style/fig.sty
+\endinput

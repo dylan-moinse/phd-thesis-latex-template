@@ -1,0 +1,100 @@
+%% =====================================
+%% TABLE 3
+%% =====================================
+%% Description: Integrate a table
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin elements/tables/table03.tex
+    \begin{document}
+
+    % Table 03
+\customizedtable{chap2-02} % Label
+    {Custom Template Commands} % Caption
+    {
+    %%
+    %% Number and size of cells
+    %%
+    \begin{tabular}{
+    p{0.8\textwidth} % Column 1
+    p{0.2\textwidth} % Column 2
+    }
+    %%
+    %% Headers
+    %%
+\theader{Codes Defined in the Document} &
+\theader{Definition}\\
+    %%
+    \hline
+    %%
+\textbf{Elements} &\\
+    %%
+\texttt{\textbackslash customizedfigure\{label\}\{caption\}\{path\}\{width\}\{author\}\{year\}} & \small{Figure}\\
+    %%
+\texttt{\textbackslash customizedfigureinline\{subcaption\}\{path\}\{width\}\{label\}} & \small{Subfigure}\\
+    %%
+\texttt{\textbackslash customizedmap\{label\}\{caption\}\{path\}\{width\}\{author\}\{year\}} & \small{Map}\\
+    %%
+\texttt{\textbackslash customizedtable\{label\}\{caption\}\{content\}\{author\}\{year\}\{source\}} & \small{Table}\\
+    %%
+\texttt{\textbackslash customizedequation\{label\}\{caption\}\{content\}\{author\}\{year\}\{where\}} & \small{Formula}\\
+    %%
+    \hdashline
+    %%
+\textbf{Colors} &\\
+    %%
+\texttt{\textbackslash customizedcolor\{text\}} & \small{Blue}\\
+    %%
+    \hdashline
+    %%
+\textbf{Backgrounds} &\\
+    %%
+\texttt{\textbackslash enablepartbg} & \small{Parts}\\
+    %%
+\texttt{\textbackslash setpartsource\{text\}} & \small{Part Picture}\\
+    %%
+\texttt{\textbackslash enablechapterbg} & \small{Chapters}\\
+    %%
+\texttt{\textbackslash setchaptersource\{text\}} & \small{Chap. Picture}\\
+    %%
+    \hdashline
+    %%
+\textbf{Text and Formatting} &\\
+    %%
+\texttt{\textbackslash mylettrine\{Letter\}\{word\}} & \small{Lettrine}\\
+    %%
+\texttt{\textbackslash brand\{name\}} & \small{Trademark}\\
+    %%
+\texttt{\textbackslash mdot\{text\}} & \small{Middle dot}\\
+    %%
+    \hdashline
+    %%
+\textbf{Placeholder Text} &\\
+    %%
+\texttt{\textbackslash lorembrief} & \small{2 sentences}\\
+    %%
+\texttt{\textbackslash loremshort} & \small{3 sentences}\\
+    %%
+\texttt{\textbackslash loremsmall} & \small{4 sentences}\\
+    %%
+\texttt{\textbackslash loremmedium} & \small{6 sentences}\\
+    %%
+\texttt{\textbackslash loremlong} & \small{1 paragraph}\\
+    %%
+\texttt{\textbackslash loremverylong} & \small{2 paragraphs}\\
+    %%
+\texttt{\textbackslash loremtoolong} & \small{4 paragraphs}\\
+    %%
+    %%
+    \hline
+    %%
+    \end{tabular}
+    }
+    {Realization}
+    {Moinse} % Author
+    {2025} % Year
+    {\loremshort} % Reading note
+
+%% End elements/tables/table03.tex
+    \end{document}

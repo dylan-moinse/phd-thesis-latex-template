@@ -1,0 +1,61 @@
+%% =====================================
+%% ABSTRACT
+%% =====================================
+%% Description: Write your thesis abstract
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content/back-matter/99-abstract.tex
+    \begin{document}
+
+    \cleardoublepage
+    %\AtEndDocument{
+    %\phantomsection
+    \ifodd\value{page}
+        \null
+        \clearpage
+    \fi
+
+\thispagestyle{empty}
+
+    % Background
+\enablechapterbg
+\setpartsource{Photography: Author (Year)}
+
+\section*{Abstract}
+    \label{part:abstract}
+    \needspace{1\baselineskip} % Réserve de l'espace
+    \addcontentsline{toc}{part}{Abstract}
+    \markboth{Abstract}{}
+    \markright{Abstract}{}
+
+    % Lipsum 1
+\mylettrine{A}{bstract} \loremlong %%V1
+
+    % Lipsum 2
+\loremmedium %%V1
+
+    % Lipsum 3
+\loremlong %%V1
+
+    % Lipsum 4
+\loremmedium %%V1
+
+    \vspace{4em}
+
+    %% Keywords
+    \needspace{1\baselineskip} % Réserve de l'espace
+\subsection*{Keywords}
+    %%
+    \vspace{1em}
+    %%
+    \noindent
+Keyword~1;
+Keyword~2;
+Keyword~3;
+Keyword~4;
+Keyword~5
+
+%% End content/back-matter/99-abstract.tex
+    \end{document}

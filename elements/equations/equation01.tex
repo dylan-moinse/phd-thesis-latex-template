@@ -1,0 +1,38 @@
+%% =====================================
+%% EQUATION 1
+%% =====================================
+%% Description: Integrate an equation
+%% Can be compiled independently or as part of main.tex
+
+%\documentclass[../../main.tex]{subfiles}
+
+%% Begin elements/equations/equation01.tex
+    %\begin{document}
+
+\customizedequation{chap1-01}
+    {Caption of Equation~1.1}
+    %%
+    %% Equation
+    %%
+    {
+\displaystyle Q_{\text{\LaTeX}} = \sum_{i=1}^{n} P_i
+    }
+    %%
+    %% Metadata
+    %%
+    {Source}
+    {Author}
+    {Year}
+    %%
+    %% Variables
+    %%
+    {%
+    \hspace{5em}where:\\[0.5em]
+    %%
+\hspace{3em}$Q_{\text{\LaTeX}}$ is the overall \LaTeX{} quality of the thesis,\\
+\hspace{3em}$P_i$ is the individual \LaTeX{}-related quality parameter,\\
+\hspace{3em}$n$ is the total number of parameters considered.
+    }
+
+%% End elements/equations/equation01.tex
+    %\end{document}

@@ -1,0 +1,108 @@
+%% =====================================
+%% INTRODUCTION
+%% =====================================
+%% Description: Write your general introduction
+%% Can be compiled independently or as part of main.tex
+
+\documentclass[../../main.tex]{subfiles}
+
+%% Begin content:main-matter/introduction.tex
+    \begin{document}
+
+%\afterpage{
+
+    % Background
+\enablepartbg
+\setpartsource{Photography: Author (Year)}
+%}%}
+
+\renewcommand{\thefigure}{I.\arabic{figure}}
+\renewcommand{\themap}{I.\arabic{map}}
+\renewcommand{\thetable}{I.\arabic{table}}
+\renewcommand{\theequation}{I.\arabic{equation}}
+
+\setcounter{figure}{0}
+\setcounter{map}{0}
+\setcounter{table}{0}
+\setcounter{equation}{0}
+
+    \needspace{1\baselineskip}
+\part*{Introduction}
+    \label{part:introduction}
+    %\addcontentsline{toc}{part}{}
+    \markboth{Introduction}{}
+    \markright{Introduction}{}
+    \begin{refsegment}
+
+    % Citation
+    \begin{displayquote}
+\enquote{\textsl{\loremshort} [\dots] \textsl{\loremshort} [\dots] \textsl{\loremshort} [\dots] \autocite[750]{moinse2025}
+.}%V1%
+
+\textcite{moinse2025}. \textsl{Le modèle urbain du Transit-Oriented Development revisité par la mobilité individuelle légère émergente. Une investigation dans la région Hauts-de-France}, Doctoral Thesis, Gustave Eiffel University, p.~1--750. \url{https://hal.science/tel-05160113}%V1%
+    \end{displayquote}
+    %%
+    \vspace{0.5cm}
+    %%
+
+    % Lipsum 1
+\mylettrine{I}{ntroduction} \loremlong %%V1
+
+    % Lipsum 2
+\loremmedium %%V1
+
+    % Lipsum 3
+\loremlong %%V1
+
+    % Lipsum 4
+\loremmedium %%V1
+
+    % Lipsum 5
+\loremlong %%V1
+
+    % Lipsum 6
+\loremmedium %%V1
+
+    % Lipsum 7
+\loremlong %%V1
+
+    % Lipsum 8
+\loremmedium %%V1
+
+    % Lipsum 9
+\loremlong %%V1
+
+    % Lipsum 10
+\loremmedium %%V1
+
+    \needspace{1\baselineskip}
+    \sectionheader{Section Short Title}
+\section*{Thesis Structure}
+    \label{section:introduction-structure}
+    \addcontentsline{toc}{section}{Thesis Structure}
+    \markboth{Thesis Structure}{}
+    \markright{Thesis Structure}{}
+
+    % Fig01: General Structure of the LaTeX Thesis Template
+\subfile{../../elements/figures/fig01}
+
+    % Lipsum 11
+\loremshort~Lorem ipsum dolor sit amet (see \hyperref[part:1]{Part}~\ref{part:1}, \hyperref[part:1]{p.}~\pageref{chapter:2}). %%V1
+
+    % Lipsum 12
+\loremmedium~Lorem ipsum dolor sit amet (see \hyperref[chapter:1]{Chapter}~\ref{chapter:1}, \hyperref[chapter:1]{p.}~\pageref{chapter:1}). %%V1
+
+    % Lipsum 13
+\loremshort~Lorem ipsum dolor sit amet (see \hyperref[chapter:2]{Chapter}~\ref{chapter:2}, \hyperref[chapter:2]{p.}~\pageref{chapter:2}). %%V1
+
+    % Subbibliography
+    \newpage
+    %\sectionheader{}
+    \begingroup
+    \renewcommand{\bibfont}{\scriptsize}
+\printbibliography[segment=\therefsegment, heading=subbibintoc, title={Subbibliography of Introduction}, label=introduction]
+    \endgroup
+    \end{refsegment}
+
+%% End content/main-matter/introduction.tex
+    \end{document}
