@@ -94,6 +94,8 @@ phd-thesis-latex-template/         # Root directory of the thesis template
 │
 ├── main.tex                       ## Main document file
 ├── latexmkrc                      ## Compilation configuration
+├── LICENSE                        ## MIT license
+├── README.md                      ## GitHub README
 │
 ├── asset/                         ## Document class and style definitions
 │   ├── thesis.cls                 ### Main document class
